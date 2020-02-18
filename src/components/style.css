@@ -1,0 +1,13 @@
+* {
+  font-family: 'Montserrat';
+}
+.login-form {
+  max-width: 300px;
+  padding: "auto";
+  }
+  .login-form-forgot {
+	float: right;
+  }
+  .login-form-button {
+	width: 100%;
+  }

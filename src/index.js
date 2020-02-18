@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import { Provider } from 'react-redux';
 
-setTimeout(()=> ReactDOM.render(<App />, document.getElementById('root')), 1000)
+import App from './components/App';
+import store from './store';
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>
+	, document.getElementById('root'))
