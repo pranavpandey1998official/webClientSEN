@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { init } from '../../actions/init'
+import { init } from '../../actions/init';
+import Fetchme from './Fetchme.js';
 
 class LandingPage extends Component {
 	componentDidMount() {
@@ -11,14 +12,16 @@ class LandingPage extends Component {
 	render() {
 		return (
 			<div className="container" style={{top: 0, right: 0, bottom: 0, left: 0, margin: 'auto', position: 'absolute', width: '300px', height: '300px'}}>
-			  <div className="chimney" style={{top: '-150px', right: 0, bottom: 0, left: '115px', margin: 'auto', position: 'absolute', width: '50px', height: '50px', zIndex: -1}}>
+			 <Fetchme />
+              <div className="chimney" style={{top: '-150px', right: 0, bottom: 0, left: '115px', margin: 'auto', position: 'absolute', width: '50px', height: '50px', zIndex: -1}}>
 				<div className="cTop" style={{top: '24px', right: 0, bottom: 0, left: '4px', margin: 'auto', position: 'absolute', width: '70%', height: '6px', borderRadius: '6px', border: '5px solid #292d39'}}>
 				  <div className="vapour" style={{top: '-20px', right: 0, bottom: 0, left: 0, margin: 'auto', position: 'absolute', width: '4px', height: '10px', backgroundColor: '#292d39', borderRadius: '10px', animation: 'evaporate 500ms infinite', animationDelay: '200ms'}} />
 				  <div className="vapour" style={{top: '-20px', right: 0, bottom: 0, left: '-15px', margin: 'auto', position: 'absolute', width: '4px', height: '10px', backgroundColor: '#292d39', borderRadius: '10px', animation: 'evaporate 500ms infinite', animationDelay: '400ms'}} />
 				  <div className="vapour" style={{top: '-20px', right: 0, bottom: 0, left: '-30px', margin: 'auto', position: 'absolute', width: '4px', height: '10px', backgroundColor: '#292d39', borderRadius: '10px', animation: 'evaporate 500ms infinite', animationDelay: '600ms'}} />
 				  <div className="vapour" style={{top: '-20px', right: 0, bottom: 0, left: '15px', margin: 'auto', position: 'absolute', width: '4px', height: '10px', backgroundColor: '#292d39', borderRadius: '10px', animation: 'evaporate 500ms infinite', animationDelay: '800ms'}} />
 				  <div className="vapour" style={{top: '-20px', right: 0, bottom: 0, left: '30px', margin: 'auto', position: 'absolute', width: '4px', height: '10px', backgroundColor: '#292d39', borderRadius: '10px', animation: 'evaporate 500ms infinite', animationDelay: '1000ms'}} />
-				</div>
+				
+                </div>
 				<div className="cBot" style={{top: '50px', right: 0, bottom: 0, left: 0, margin: 'auto', position: 'absolute', width: '10px', height: '20px', borderRadius: '6px', border: '5px solid #292d39'}} />
 			  </div>
 			  <div className="ceils" style={{top: 0, right: 0, bottom: 0, left: 0, margin: 'auto', position: 'absolute', transform: 'rotate(-90deg)'}}>
