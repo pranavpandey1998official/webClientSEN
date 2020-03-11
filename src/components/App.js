@@ -20,7 +20,8 @@ import Contact from './Contact';
 import Blog from './Blog';
 import Info from './Info';
 import LandingPage from './LandingPage';
-import ResetPassword from './Auth/Reset'
+import ResetPassword from './Auth/Reset';
+import Main from './Main'
 
 
 class App extends Component {
@@ -61,7 +62,10 @@ class App extends Component {
                   <ResetPassword />
                 </Route> 
                 <Router path="/home">
-                  <Home />
+                  <Main />
+                </Router>
+                <Router path="/Main">
+                  <Main />
                 </Router>
               </Switch>
               </Route>
