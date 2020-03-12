@@ -62,7 +62,7 @@ class App extends Component {
                   <ResetPassword />
                 </Route> 
                 <Router path="/home">
-                  <Main />
+                  <Home />
                 </Router>
                 <Router path="/Main">
                   <Main />
