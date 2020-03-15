@@ -4,7 +4,14 @@ class Home extends Component {
 	render() {
 		return(
 			<div>
-			<div>Home Page</div>
+				<AutoComplete
+                    			dropdownMatchSelectWidth={252}
+                    			style={{ width: 300 }}
+                    			options={[]}
+                		>
+                    		<Input.Search size="large" placeholder="input here" onSearch={value => console.log(value)} />
+                		</AutoComplete>
+				<div>Home Page</div>
 
 			</div>
 		)
