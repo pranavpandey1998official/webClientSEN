@@ -69,40 +69,74 @@ class NormalLoginForm extends React.Component {
     if(this.props.isAuthenticated){
       return <Redirect to="/" />
     }
-    
-    return (
-        <Row type="flex" justify="center" align="middle" style={{margin: '5em'}}>
-          <Col xs ={{span:8, offset: 1}}>
-          <h1 style={{textAlign: 'center', fontFamily: 'montserrat'}}>Please Enter Your Credentials</h1>
-          <Form>
-            <Form.Item name='email'>
-                <Input
-                  name='email'
-                  prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Email"
-                />
-            </Form.Item>
-            <Form.Item  name='password'>
-                <Input
-                  name='password'
-                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  type="password"
-                  placeholder="Password"
-                />
-            </Form.Item>
-              <Button type="primary" htmlType="submit" className="login-form-button">
-                Log in
-              </Button>
-              <a className="login-form-forgot" onClick={this.toggleForget}>
-                Forgot password
-              </a>
-          </Form>
-          </Col>
-          <Col xs ={12} >
-           {this.renderRightPanel()}
-          </Col>
-          </Row>
+    return(
+      <div className='container' style={{width: '100%'}}>
+      <div className='columns is-centered'>
+        <div className='column'>
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Email" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" placeholder="Password" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-success">
+                Login
+              </button>
+            </p>
+          </div>
+        </div>
+        <div className='column'>
+          <p>dasda</p>
+        </div>
+      </div>
+      </div>
     );
+    
+    // return (
+    //     <Row type="flex" justify="center" align="middle" style={{margin: '5em'}}>
+    //       <Col xs ={{span:8, offset: 1}}>
+    //       <h1 style={{textAlign: 'center', fontFamily: 'montserrat'}}>Please Enter Your Credentials</h1>
+    //       <Form>
+    //         <Form.Item name='email'>
+    //             <Input
+    //               name='email'
+    //               prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+    //               placeholder="Email"
+    //             />
+    //         </Form.Item>
+    //         <Form.Item  name='password'>
+    //             <Input
+    //               name='password'
+    //               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+    //               type="password"
+    //               placeholder="Password"
+    //             />
+    //         </Form.Item>
+    //           <Button type="primary" htmlType="submit" className="login-form-button">
+    //             Log in
+    //           </Button>
+    //           <a className="login-form-forgot" onClick={this.toggleForget}>
+    //             Forgot password
+    //           </a>
+    //       </Form>
+    //       </Col>
+    //       <Col xs ={12} >
+    //        {this.renderRightPanel()}
+    //       </Col>
+    //       </Row>
+    // );
   }
 }
 

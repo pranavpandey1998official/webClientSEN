@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Icon } from 'antd';
 import { connect } from 'react-redux';
 import {
 	useLocation,
@@ -8,7 +8,6 @@ import {
   } from "react-router-dom";
 import { logoutUser } from '../../actions/auth';
 
-const { Header, Content, Footer } = Layout;
 
 
 const NavBar = ({ isAuthenticated, logoutUser }) => {
@@ -17,36 +16,54 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 		if(isAuthenticated) {
 			return (
 				[
-					<Menu.Item key="/login" style={{float: 'right'}}><div onClick={logoutUser}>Logout</div></Menu.Item>,
-					<Menu.Item key="/wishList" style={{float: 'right'}}><Link to='/wishList'><Icon type="crown" style={{fontSize: 20, margin: 0}}/></Link></Menu.Item>,
-					<Menu.Item key="/bell" style={{float: 'right'}}><Icon type="bell" style={{fontSize: 20, margin: 0}}/></Menu.Item>
+					
+					<Link class="navbar-item" to='/wishList'><Icon type="crown" style={{fontSize: 20, margin: 0}}/></Link>,
+					<a class="navbar-item"><Icon type="bell" style={{fontSize: 20, margin: 0}}/></a>,
+					<div class="navbar-item" onClick={logoutUser}>Logout</div>,
 				]
 			);
 		}
 		return (
 				[
-					<Menu.Item key="/login" style={{float: 'right'}}><Link to='/login'>Login</Link></Menu.Item>,
-					<Menu.Item key="/signUp" style={{float: 'right'}}><Link to='/signUp'>Sign Up</Link></Menu.Item>
+					<div class="navbar-item">
+						<div class="buttons">
+						<Link to='/login' class="button is-primary">
+							<strong>Sign up</strong>
+						</Link>
+						<Link to='/signUp' class="button is-light">
+							Log in
+						</Link>
+						</div>
+					</div>
 				]
 		);
 	}
 	return(
-		<Header>
-            <div className="logo"></div>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={['2']}
-			  style={{ lineHeight: '64px' }}
-			  selectedKeys={[location.pathname]}
-            >
-              <Menu.Item key="/"><Link to='/'>Home</Link></Menu.Item>
-              <Menu.Item key="/contact"><Link to='/contact'>Contact</Link></Menu.Item>
-			  <Menu.Item key="/blog"><Link to='/blog'>Blog</Link></Menu.Item>
-			  {renderLeft()}
-            </Menu>
-          </Header>
-	)
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item">
+					<Link to='/'>
+						<b>WSILN</b>
+					</Link>
+					</a>
+			</div>
+
+			<div id="navbarBasicExample" class="navbar-menu">
+				<div class="navbar-start">
+					<Link class="navbar-item">
+						Home
+					</Link>
+					<Link class="navbar-item">
+						Contact
+					</Link>
+				</div>
+
+				<div class="navbar-end">
+					{renderLeft()}
+				</div>
+			</div>
+			</nav>
+		)
 }
 
 const mapStateToProps = (state) => ({

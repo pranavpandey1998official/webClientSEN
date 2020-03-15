@@ -34,7 +34,6 @@ class App extends Component {
   render() {
     return (
         <Router >
-        <Layout>
           <Switch>
             <Route exact path="/">
                 <LandingPage />
@@ -66,7 +65,6 @@ class App extends Component {
               </Switch>
               </Route>
             </Switch>
-          </Layout>
           <ToastContainer />
         </Router>
     )
