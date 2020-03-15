@@ -1,4 +1,14 @@
 import React, { Component } from 'react';
+import { Layout, Menu, Breadcrumb, Icon, Input, AutoComplete } from 'antd';
+import { connect } from 'react-redux';
+import {
+    useLocation,
+    Link,
+    withRouter
+  } from "react-router-dom";
+import { logoutUser } from '../../actions/auth';
+const { Search } = Input;
+const { Header, Content, Footer } = Layout;
 
 class Home extends Component {
 	render() {
