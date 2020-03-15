@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Properties from './Properties';
-import Search from './Search';
+import Searching from './Searching';
 import Filter from './Filter';
 
-class Main extends Component
+class Search extends Component
 {
     render()
     {
@@ -11,7 +11,7 @@ class Main extends Component
             <div>
                 <div>
                     <Filter />
-                    <Search />
+                    <Searching />
                 </div>
                 <div>
                     <p>List of all properties</p>
@@ -23,4 +23,4 @@ class Main extends Component
     }
 }
 
-export default Main;
+export default Search;
