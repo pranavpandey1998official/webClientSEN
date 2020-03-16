@@ -6,8 +6,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { Layout } from 'antd';
-import 'antd/dist/antd.css';
 import './style.css'
 import Login from './Auth/Login'
 import { ToastContainer } from 'react-toastify';
