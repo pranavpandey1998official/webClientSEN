@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Properties from './Properties';
-import Searching from './Searching';
-import Filter from './Filter';
 
 class Search extends Component
 {
@@ -9,10 +7,7 @@ class Search extends Component
     {
         return (
             <div>
-                <div>
-                    <Filter />
-                    <Searching />
-                </div>
+                
                 <div>
                     <p>List of all properties</p>
                     <Properties />
