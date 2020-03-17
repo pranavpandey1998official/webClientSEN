@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Properties from './Properties';
 
-class Search extends Component
+class App extends Component
 {
     render()
     {
@@ -18,4 +18,4 @@ class Search extends Component
     }
 }
 
-export default Search;
+export default App;
