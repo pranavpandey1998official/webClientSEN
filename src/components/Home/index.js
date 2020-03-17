@@ -7,7 +7,6 @@ class Home extends Component {
 			<div >
 				<h1 id="homeTitle">Where Do You want to Live!</h1>
 				<div>
-					<input></input>
 				</div>
 			</div>
 		)

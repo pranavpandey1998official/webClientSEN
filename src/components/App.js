@@ -18,7 +18,8 @@ import Contact from './Contact';
 import Blog from './Blog';
 import Info from './Info';
 import LandingPage from './LandingPage';
-import ResetPassword from './Auth/Reset'
+import ResetPassword from './Auth/Reset';
+import Search from './Search';
 
 
 class App extends Component {
@@ -59,6 +60,9 @@ class App extends Component {
                 </Route> 
                 <Router path="/home">
                   <Home />
+                </Router>
+                <Router path="/search">
+                  <Search />
                 </Router>
               </Switch>
               </Route>

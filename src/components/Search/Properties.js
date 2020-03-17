@@ -28,7 +28,7 @@ class Properties extends Component{
         return(
            <div><h1> properties</h1>
           
-            <div><ul className="person" styled={App}>
+            <div><ul className="person">
          {this.state.properties.slice(0,this.state.visible).map((property,i) => (
              <div key ={`some-property -${i}`}>
                    <img src={property.picture.large}/>
