@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
+
 class Properties extends Component{
         state ={
             
-            people : [],
+            properties : [],
             visible :3
 
         }
         async componentDidMount() {
-            const url ="https://api.randomuser.me/?results=100";
+            const url ="https://api.myjson.com/bins/uqvny";
             const response = await fetch(url);
             const data=await response.json();
             
-            this.setState({people : data.results});
+            this.setState({properties : data.results});
         }
         loadmore = () => {
              this.setState({visible:this.state.visible+4})
@@ -21,20 +22,24 @@ class Properties extends Component{
        
     render(){
        
-        if(!this.state.people.length)
+        if(!this.state.properties.length)
         return(<div> loading....</div>)
 
         return(
-           <div><h1> Properties</h1>
+           <div><h1> properties</h1>
           
-            <div><ul className="person" >
-         {this.state.people.slice(0,this.state.visible).map((person,i) => (
-             <div key ={`some-person -${i}`}>
-                 <div>{person.name.title}</div>
-                 <div> {person.name.first}</div>
-                <div>{person.name.last}</div>
-                <img src={person.picture.large}/>
-               
+            <div><ul className="person" styled={App}>
+         {this.state.properties.slice(0,this.state.visible).map((property,i) => (
+             <div key ={`some-property -${i}`}>
+                   <img src={property.picture.large}/>
+                 <div>AreaType: {property.Areatype}</div>
+                 <div> Location : {property.location.street.number},  
+                {property.location.street.name}</div>
+                <div>city:{property.location.city}</div>
+                <div>state:{property.location.state}</div>
+                <div>country:{property.location.country}</div>
+                <div>postcode:{property.location.postcode}</div>
+              
              </div>
          ))
         }
@@ -48,3 +53,4 @@ class Properties extends Component{
     }
 
 export default Properties
+
