@@ -8,12 +8,12 @@ class App extends Component
     {
         return (
             <div className="columns">
-                <div className="column is-one-quarter">
+                <div className="column is-one-quarter is-offset-1">
                 <div style={{ position: "fixed"}}>
                     <Filter />
                 </div>
                 </div>
-                <div className="column">
+                <div className="column is-offset-1">
                     <p>List of all properties</p>
                     <Properties />
                     
