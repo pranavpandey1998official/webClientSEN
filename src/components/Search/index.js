@@ -8,8 +8,8 @@ class App extends Component
     {
         return (
             <div className="columns">
-                <div className="column is-one-quarter">
-                <div style={{ position: "fixed"}}>
+                <div className="column is-one-quarter is-offset-1">
+                <div style={{ position: "fixed" }}>
                     <Filter />
                 </div>
                 </div>

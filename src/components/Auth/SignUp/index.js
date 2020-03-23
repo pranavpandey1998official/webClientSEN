@@ -3,7 +3,6 @@ import { withFormik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { createUser } from '../../../actions/auth';
 
 class NormalSignUpForm extends React.Component {
