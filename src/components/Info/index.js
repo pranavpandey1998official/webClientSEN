@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 
 import ResetPasswordSuccess from './resetPasswordSuccess';
 import ForgotPassword from './forgotPassword';
+import NotAvailable from '../NotAvailable';
 
 const Info = (props) => {
 	let { info } = useParams();
