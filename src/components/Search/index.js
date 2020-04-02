@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Property from './Property';
 import Filter from './Filter';
 
+import { SERVER_URL } from '../../utils/constants';
+
 class Search extends Component {
     
     constructor(props) {
@@ -13,12 +15,15 @@ class Search extends Component {
     }
 
     async componentDidMount() {
-        const url = "https://api.myjson.com/bins/uqvny";
+        const url = SERVER_URL + '/property';
         const response = await fetch(url);
         const data = await response.json();
-    
-        this.setState({ properties: [...data.results] });
+        this.setProperty(data.property);
     }
+
+    setProperty = (property) => {
+        this.setState({ properties: [...property] });
+    } 
 
     loadmore = () => {
         this.setState({ visible: this.state.visible + 4 })
@@ -32,23 +37,23 @@ class Search extends Component {
             <div class="container" style={{ marginLeft: 0 }}>
            { properties.slice(0, this.state.visible).map((property, i) => (
                 <Property 
-                    type="Bungalow"
-                    ownerPhoneNumber="9664855492"
-                    address='HoR Men,DA-IICT,Infocity,Gandhinagar-382007'
-                    city='ahmedabad'
-                    noOfBedroom={3}
-                    totalSqft={1,890}
-                    noOfBathrooms={3}
-                    price="320"
-                    distanceToNearestGym="12"
-                    distanceToNearestHospital="12"
-                    distanceToNearestSchool="12"
-                    furnished={true}
-                    imageURL="http://www.hdnicewallpapers.com/Walls/Big/House%20and%20Bungalow/Fabulous_Unique_Home_HD_Wallpapers.jpg"
+                    key={property.propertyId}
+                    type={property.type}
+                    ownerPhoneNumber={property.ownerPhoneNumber}
+                    city={property.city}
+                    noOfBedrooms={property.noOfBedrooms}
+                    totalSqft={property.totalSqft}
+                    noOfBathrooms={property.noOfBathrooms}
+                    price={property.price}
+                    distanceToNearestGym={property.distanceToNearestGym}
+                    distanceToNearestHospital={property.distanceToNearestHospital}
+                    distanceToNearestSchool={property.distanceToNearestSchool}
+                    furnished={property.furnished}
+                    imageURL={SERVER_URL + '/' + property.imagePath}
                 />))}
                  <div class="block" style={{ textAlign: 'center' }}>
                      <a class="button is-primary" onClick={this.loadmore}>load more </a>
-                    </div>
+                </div>
         </div>
         )
 
@@ -58,11 +63,12 @@ class Search extends Component {
             <div className="columns">
                 <div className="column is-one-quarter is-offset-1">
                 <div style={{ position: "fixed" }}>
-                    <Filter />
+                    <Filter 
+                        setProperty ={this.setProperty}
+                    />
                 </div>
                 </div>
                 <div className="column">
-                    <p>List of all properties</p>
                     {this.renderProperties()}
                 </div>
             </div>
