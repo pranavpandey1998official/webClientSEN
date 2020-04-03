@@ -20,6 +20,7 @@ import Info from './Info';
 import LandingPage from './LandingPage';
 import ResetPassword from './Auth/Reset';
 import Search from './Search';
+import NotAvailable from './NotAvailable';
 
 
 class App extends Component {
@@ -58,12 +59,15 @@ class App extends Component {
                 <Route path="/reset-password/:token">
                   <ResetPassword />
                 </Route> 
-                <Router path="/home">
+                <Route path="/home">
                   <Home />
-                </Router>
-                <Router path="/search">
+                </Route>
+                <Route path="/search/ahmedabad" >
                   <Search />
-                </Router>
+                </Route>
+                <Route path="/search">
+                  <NotAvailable />
+                </Route>
               </Switch>
               </Route>
             </Switch>

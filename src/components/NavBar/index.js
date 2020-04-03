@@ -14,27 +14,27 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 	const renderLeft = () => {
 		if (isAuthenticated) {
 			return (
-				<div class="navbar-item">
-					<Link class="navbar-item" to='/wishList'>
-						<span class="icon has-text-info is-medium">
-						<i class="fas fa-list fa-lg"></i>
+				<div className="navbar-item">
+					<Link className="navbar-item" to='/wishList'>
+						<span className="icon has-text-info is-medium">
+						<i className="fas fa-list fa-lg"></i>
 				  		</span>
 					</Link>
-					<span class="icon has-text-info is-medium">
-						<i class="far fa-bell fa-lg"></i>
+					<span className="icon has-text-info is-medium">
+						<i className="far fa-bell fa-lg"></i>
 				  	</span>
-					<div class="button is-light" onClick={logoutUser}>Logout</div>
+					<div className="button is-light" onClick={logoutUser}>Logout</div>
 				</div>
 			);
 		}
 		return (
 			[
-				<div class="navbar-item">
-					<div class="buttons">
-						<Link to='/signUp' class="button is-primary">
+				<div className="navbar-item">
+					<div className="buttons">
+						<Link to='/signUp' className="button is-primary" key='signup'>
 							<strong>Sign up</strong>
 						</Link>
-						<Link to='/login' class="button is-light">
+						<Link to='/login' className="button is-light" key='login'>
 							Log in
 						</Link>
 					</div>
@@ -43,29 +43,29 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 		);
 	}
 	return (
-		<nav class="navbar" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<a class="navbar-item">
-					<Link to='/'>
+		<nav className="navbar" role="navigation" aria-label="main navigation">
+			<div className="navbar-brand">
+				<div className="navbar-item" key={'logo'}>
+					<Link to='/' >
 						<b>WSILN</b>
 					</Link>
-				</a>
+				</div>
 			</div>
 
-			<div id="navbarBasicExample" class="navbar-menu">
-				<div class="navbar-start">
-					<Link class="navbar-item" to='/home'>
+			<div id="navbarBasicExample" className="navbar-menu">
+				<div className="navbar-start">
+					<Link className="navbar-item" to='/home' key={'home'}>
 						Home
 					</Link>
-					<Link class="navbar-item" to='/contact'>
+					<Link className="navbar-item" to='/contact' key={'contact'}>
 						Contact
 					</Link>
-					<Link className="navbar-item" to='/Blog'>
+					<Link className="navbar-item" to='/Blog' key={'blog'}>
 						Blog
 					</Link>
 				</div>
 
-				<div class="navbar-end">
+				<div className="navbar-end">
 					{renderLeft()}
 				</div>
 			</div>

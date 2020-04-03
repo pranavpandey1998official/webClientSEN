@@ -3,11 +3,13 @@ import { useField, Field, Form, withFormik } from "formik";
 import Select from "react-select";
 import Slider from '@material-ui/core/Slider';
 
+import { SERVER_URL } from '../../utils/constants';
+
 const amenitiesOptions = [
-	{ value: "furnished", label: "Furnished" },
-	{ value: "hospital", label: "Hospital" },
-	{ value: "school", label: "School" },
-	{ value: "gym", label: "Gym" },
+	{ value: "isFurnished", label: "Furnished" },
+	{ value: "isHospital", label: "Hospital" },
+	{ value: "isSchool", label: "School" },
+	{ value: "isGym", label: "Gym" },
 ];
 
 const typeOptions = [
@@ -28,7 +30,7 @@ const SliderValues = ( type, name ) => {
 		return {
 			defaultValue: 1,
 			min: 1,
-			max: 5,
+			max: 10,
 			step: 1,
 		};
 	} else {
@@ -91,6 +93,7 @@ const FormSlider = (props) => {
 };
 
 class FilterForm extends React.Component {
+
 	render() {
 		return (
 			<div className="column">
@@ -147,7 +150,7 @@ class FilterForm extends React.Component {
 											<label class="label">Area (Sq. Feet)</label>
 											<div class="control" style={{width:"250px"}}>
 												<FormSlider
-													name="area"
+													name="totalSqft"
 													label="area"
 													type="range"
 													style={{width:"250px"}}
@@ -159,7 +162,7 @@ class FilterForm extends React.Component {
 											<label class="label">Bedrooms</label>
 											<div class="control" style={{width:"250px"}}>
 												<FormSlider
-													name="bedroom"
+													name="noOfBedrooms"
 													label="bedroom"
 													type="single"
 													style={{width:"250px"}}
@@ -171,7 +174,7 @@ class FilterForm extends React.Component {
 											<label class="label">Bathrooms</label>
 											<div class="control" style={{width:"250px"}}>
 												<FormSlider
-													name="bathroom"
+													name="noOfBathrooms"
 													label="bathroom"
 													type="single"
 													style={{width:"250px"}}
@@ -183,7 +186,7 @@ class FilterForm extends React.Component {
 											<label class="label">Balconies</label>
 											<div class="control" style={{width:"250px"}}>
 												<FormSlider
-													name="balcony"
+													name="noOfBalconies"
 													label="balcony"
 													type="single"
 													style={{width:"250px"}}
@@ -210,9 +213,47 @@ class FilterForm extends React.Component {
 };
 
 const Filter = withFormik({
-	handleSubmit(values){
-		//handle form values here
-		console.log(values);
+	 async handleSubmit(values, { props, setSubmitting }){
+		const {
+			type,
+			price,
+			totalSqft,
+			noOfBalconies,
+			noOfBathrooms,
+			noOfBedrooms,
+			amenities = []
+		} = values;
+
+		const body = {
+			noOfBalconies,
+			noOfBathrooms,
+			noOfBedrooms,
+			totalSqft: totalSqft && {
+				max: totalSqft[1],
+				min: totalSqft[0]
+			},
+			price: price && {
+				max: price[1],
+				min: price[0]
+			},
+			type,
+		}
+		amenities.forEach((item) => {
+			body[item.value] = true;
+		});
+
+		const URL = SERVER_URL + '/property/filter';
+		const response = await fetch(URL, {
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			method: "POST",
+			body: JSON.stringify(body)
+		});
+		const data = await response.json(); 
+		setSubmitting(false);
+		props.setProperty(data.property);
 	}
 })(FilterForm);
 
