@@ -18,6 +18,7 @@ class Search extends Component {
         const url = SERVER_URL + '/property';
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data)
         this.setProperty(data.property);
     }
 
@@ -51,7 +52,7 @@ class Search extends Component {
                     furnished={property.furnished}
                     imageURL={SERVER_URL + '/' + property.imagePath}
                 />))}
-                 <div class="block" style={{ textAlign: 'center' }}>
+                 <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
                      <a class="button is-primary" onClick={this.loadmore}>load more </a>
                 </div>
         </div>

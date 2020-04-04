@@ -96,7 +96,7 @@ class FilterForm extends React.Component {
 
 	render() {
 		return (
-			<div className="column">
+			<div className="column" data-test-id="Filter">
 				<div className="container">
 					<div className="card">
 						<div className="column is-centered">

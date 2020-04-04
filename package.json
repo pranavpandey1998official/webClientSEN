@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "cypress": "^4.2.0",
+    "cypress-react-unit-test": "^3.0.1",
     "jest-dom": "^4.0.0",
     "react-test-renderer": "^16.13.0"
   }
