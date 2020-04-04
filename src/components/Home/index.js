@@ -112,6 +112,7 @@ function ImageButton() {
 						focusVisibleClassName={classes.focusVisible}
 						style={{width: image.width, margin:'10px'}}
 						id="buttonCity"
+						data-test-id={`imageButton-${image.title}`}
 					>
 						<Link to={`/search/${image.title.toLowerCase()}`}>
 							<span className={classes.imageSrc} style={{backgroundImage: `url(${image.url})`}}/>
@@ -142,7 +143,7 @@ class Home extends React.Component {
 					<div className="column is-centered">
 						<div className="columns is-centered" style={{marginBottom:"50px"}}>
 							<p className="control has-icons-left" style={{width:"70%"}}>
-								<input className="input is-rounded" type="text" placeholder="Search City" onKeyDown={this.handleClick}/>
+								<input className="input is-rounded" type="text" placeholder="Search City" data-test-id="searchInput" onKeyDown={this.handleClick}/>
 								<span className="icon is-small is-left">
 									<i className="fas fa-search"></i>
 								</span>
