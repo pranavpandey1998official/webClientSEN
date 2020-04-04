@@ -60,7 +60,7 @@ class Search extends Component {
     }
     render() {
         return (
-            <div className="columns">
+            <div className="columns" data-test-id="SearchView">
                 <div className="column is-one-quarter is-offset-1">
                 <div style={{ position: "fixed" }}>
                     <Filter 

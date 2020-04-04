@@ -3,7 +3,7 @@ import './style.css'
 
 const NotAvailable = () => {
 	return(
-		<div class="notAvailableContainer">
+		<div class="notAvailableContainer" data-test-id="notAvailable">
 			<h1>Sorry We Are Not Currently Available In This City</h1>
 			<br></br>
 			<h1> <span class="ascii">(╯°□°）╯︵ ┻━┻</span></h1>
