@@ -4,7 +4,7 @@ import './style.css'
 class Contact extends Component {
    render() {
       return (
-         <section className="hero is-fullheight-with-navbar has-text-centered">
+         <section className="hero is-fullheight-with-navbar has-text-centered" data-test-id="ContactUs">
             <div className="hero-body">
                <div className="container">
                   <h1 className="title is-spaced is-1" id='contactTile'>Contact Us</h1>
@@ -27,11 +27,12 @@ class Contact extends Component {
                      <a className="icon" href="mailto:info@daiict.ac.in">
                         <i className="fas fa-envelope"></i>
                      </a>
-                     <span className="column is-narrow">Email: info@daiict.ac.in</span>
+                     <span className="column is-narrow" data-test-id="email">Email: info@daiict.ac.in</span>
                   </h2>
                   <h2 className="subtitle is-4">
                      <a
                         className="icon is-medium"
+                        data-test-id="facebookButton"
                         href="https://facebook.com/daiict"
                      >
                         <i className="fab fa-facebook"></i>
