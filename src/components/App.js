@@ -21,6 +21,7 @@ import LandingPage from './LandingPage';
 import ResetPassword from './Auth/Reset';
 import Search from './Search';
 import NotAvailable from './NotAvailable';
+import Property from './Property';
 
 
 class App extends Component {
@@ -67,6 +68,9 @@ class App extends Component {
                 </Route>
                 <Route path="/search">
                   <NotAvailable />
+                </Route>
+                <Route path="/property/:id">
+                  <Property />
                 </Route>
               </Switch>
               </Route>

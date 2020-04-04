@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Property from './Property';
 import Filter from './Filter';
+import { withRouter } from 'react-router-dom';
 
 import { SERVER_URL } from '../../utils/constants';
 
@@ -29,6 +30,10 @@ class Search extends Component {
         this.setState({ visible: this.state.visible + 4 })
     }
 
+    onClickProperty = (id) => {
+        this.props.history.push(`/property/${id}`)
+    }
+
     renderProperties = () => {
         const { properties } = this.state;
         if (!properties.length) return (<div> loading....</div>)
@@ -38,7 +43,9 @@ class Search extends Component {
            { properties.slice(0, this.state.visible).map((property, i) => (
                 <Property 
                     key={property.propertyId}
+                    id={property.propertyId}
                     type={property.type}
+                    onClick={this.onClickProperty}
                     ownerPhoneNumber={property.ownerPhoneNumber}
                     city={property.city}
                     noOfBedrooms={property.noOfBedrooms}
@@ -76,4 +83,4 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default withRouter(Search);
