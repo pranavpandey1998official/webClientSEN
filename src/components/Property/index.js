@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { SERVER_URL } from '../../utils/constants';
+import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
+
+
+
+
 
 class Extended extends Component {
   
@@ -12,7 +17,16 @@ class Extended extends Component {
     }
   }
 
+  
+  
+
   async componentDidMount() {
+    const carousels = bulmaCarousel.attach('#carousel-demo', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite:true,
+      
+    });
     const propertyId= this.props.match.params.id;
     const url = SERVER_URL + '/property/'+propertyId;
     const response = await fetch(url);
@@ -24,17 +38,36 @@ class Extended extends Component {
   render() {
     return (
       <div class="container" >
-        <div class="block">
+       
+        <div class="block" style={{alignContent:"center",display:"inline-block"} }>
+          <div class="level-left">
           <h1 class="title is-4" style={{ paddingLeft: 40 }}>
             Shiva Bungalows</h1>
-            {/* sample here */}
+          
+            &nbsp;&nbsp;
             <i className="fas fa-building" />
-        </div>
-        <div class='card-content is-flex' style={{ justifyContent: "center" }}>
-          <figure class="image is-5x4 " >
-            <img style={{ height: 300, width: 300 }} src="http://www.hdnicewallpapers.com/Walls/Big/House%20and%20Bungalow/Fabulous_Unique_Home_HD_Wallpapers.jpg" alt="Image" />
-          </figure>
-        </div>
+</div>        </div>
+        
+        <section class="section" style={{height:400 ,width:500,padding:0}} style={{overflow:"hidden"}}>
+        <div id="carousel-demo" class="carousel has-text-centered" style={{overflow:"hidden"}} >
+        
+          <div class="item-1 ">
+          <img className="is-background is-centered" style={{height:400,width:600}} src="http://www.hdnicewallpapers.com/Walls/Big/House%20and%20Bungalow/Fabulous_Unique_Home_HD_Wallpapers.jpg" alt=""  />
+
+          </div>
+          <div class="item-2">
+          <img className="is-background is-centered" style={{height:400,width:600}} src="https://wikiki.github.io/images/singer.jpg" alt="" />
+
+          </div>
+          <div class="item-3">
+          <img className="is-background is-centered"  style={{height:400,width:600}} src="https://wikiki.github.io/images/singer.jpg" alt=""/>
+        </div>  
+          </div>
+          
+        </section>
+        
+
+       
 
 
 
