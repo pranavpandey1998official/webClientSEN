@@ -92,7 +92,7 @@ class NormalLoginForm extends React.Component {
             <div class="field">
             <label class="label">Password</label>
               <div class="control has-icons-left">
-                <Field className="input" name="Password" type="password" placeholder="Password" />
+                <Field className="input" name="password" type="password" placeholder="Password" />
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                 </span>

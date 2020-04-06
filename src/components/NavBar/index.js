@@ -29,7 +29,7 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 		}
 		return (
 			[
-				<div className="navbar-item">
+				<div className="navbar-item" key='end'>
 					<div className="buttons">
 						<Link to='/signUp' className="button is-primary" key='signup'>
 							<strong>Sign up</strong>

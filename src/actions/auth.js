@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 
 export const login = (email,password,history) => {
 	return(dispatch) => {
-
 	axios.post(`${SERVER_URL}/auth/signin`, {email, password}).then(res => {
       // Save to localStorage
       const { token, user } = res.data;
@@ -21,7 +20,7 @@ export const login = (email,password,history) => {
       history.replace('/home');
     })
     .catch(err => {
-      if (typeof err.response !== undefined) {
+      if (err.response) {
          toast.error(err.response.data.message)
       } else {
 		console.log(err)
@@ -44,7 +43,7 @@ export const sendResetPasswordEmail = (email) => {
       toast.success('Link Has Been Successfully send to Your email ')
     })
     .catch(err => {
-      if (typeof err.response !== undefined) {
+      if (err.response) {
          toast.error(err.response.data.message)
       } else {
 		    console.log(err)
@@ -60,7 +59,7 @@ export const resetPassword = (password,token,history) => {
       history.replace('/home')
     })
     .catch(err => {
-      if (typeof err.response !== undefined) {
+      if (err.response) {
          toast.error(err.response.data.message)
       } else {
 		    console.log(err)
@@ -75,7 +74,7 @@ export const createUser = (email, password, firstName, lastName) => {
       toast.success('User Has Been SuccessFully Created Please Verify Your Email')
     })
     .catch(err => {
-      if (typeof err.response !== undefined) {
+      if (err.response) {
          toast.error(err.response.data.message)
       } else {
 		    console.log(err)
