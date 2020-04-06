@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { SERVER_URL } from '../../utils/constants';
+import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
+
+
+
+
 
 class Extended extends Component {
   
@@ -12,7 +17,17 @@ class Extended extends Component {
     }
   }
 
+  componentDidMount() {
+    var carousels = bulmaCarousel.attach('.carousel', {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      loop: true
+    });
+    
+  }
+
   async componentDidMount() {
+    
     const propertyId= this.props.match.params.id;
     const url = SERVER_URL + '/property/'+propertyId;
     const response = await fetch(url);
@@ -24,12 +39,46 @@ class Extended extends Component {
   render() {
     return (
       <div class="container" >
+       
         <div class="block">
           <h1 class="title is-4" style={{ paddingLeft: 40 }}>
             Shiva Bungalows</h1>
             {/* sample here */}
             <i className="fas fa-building" />
         </div>
+        
+       
+        <div id="carousel" class='carousel carousel-animated carousel-animate-slide' style={{overflow:"hidden"}}>
+  <div class='carousel-container'>
+    <div class='carousel-item has-background is-active'>
+      <img class="is-background" src="https://wikiki.github.io/images/merry-christmas.jpg" alt="" width="640" height="310" />
+      <div class="title">Merry Christmas</div>
+    </div>
+    <div class='carousel-item has-background'>
+      <img class="is-background" src="https://wikiki.github.io/images/singer.jpg" alt="" width="640" height="310" />
+      <div class="title">Original Gift: Offer a song with <a href="https://lasongbox.com" target="_blank">La Song Box</a></div>
+    </div>
+    <div class='carousel-item has-background'>
+      <img class="is-background" src="https://wikiki.github.io/images/sushi.jpg" alt="" width="640" height="310" />
+      <div class="title">Sushi time</div>
+    </div>
+    <div class='carousel-item has-background'>
+      <img class="is-background" src="https://wikiki.github.io/images/life.jpg" alt="" width="640" height="310" />
+      <div class="title">Life</div>
+    </div>
+  </div>
+  <div class="carousel-navigation">
+    <div class="carousel-nav-left">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </div>
+    <div class="carousel-nav-right">
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+
+
         <div class='card-content is-flex' style={{ justifyContent: "center" }}>
           <figure class="image is-5x4 " >
             <img style={{ height: 300, width: 300 }} src="http://www.hdnicewallpapers.com/Walls/Big/House%20and%20Bungalow/Fabulous_Unique_Home_HD_Wallpapers.jpg" alt="Image" />
