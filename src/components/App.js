@@ -20,6 +20,7 @@ import Info from './Info';
 import LandingPage from './LandingPage';
 import ResetPassword from './Auth/Reset';
 import Search from './Search';
+import MapView from './MapView';
 import NotAvailable from './NotAvailable';
 
 
@@ -67,6 +68,9 @@ class App extends Component {
                 </Route>
                 <Route path="/search">
                   <NotAvailable />
+                </Route>
+                <Route path="/mapview">
+                  <MapView />
                 </Route>
               </Switch>
               </Route>
