@@ -4,7 +4,8 @@ import Filter from './Filter';
 
 import { SERVER_URL } from '../../utils/constants';
 
-class Search extends Component {
+class Search extends Component 
+{
     
     constructor(props) {
         super(props);

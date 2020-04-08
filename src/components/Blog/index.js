@@ -5,8 +5,7 @@ class Blog extends Component
 {
 	render() 
 	{
-		return
-		(
+		return(
 			<div>
 				<h2 className='blogTitle' style={{style}}>
 					Real Estate investment in times of CoronaVirus
@@ -44,8 +43,8 @@ Meanwhile, the commercial space may suffer for a while. According to a press rel
 There may be outliers though. “There is always the possibility that a few cash-starved developers with high unsold stock may sweeten deals for buyers. But this was happening even before the pandemic," said Puri.
 </p>
 			</div>
-		)
+		);
 	}
-}
+};
 
 export default Blog;
