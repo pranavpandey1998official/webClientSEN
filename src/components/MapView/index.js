@@ -1,27 +1,30 @@
 import React, { Component, useState } from 'react';
 import style from './style.css';
-import ReactMapGL, { Layer, Feature } from 'react-mapbox-gl';
+import ReactMapGL, { Layer, Feature } from 'react-map-gl';
+
 
 
 class MapView extends Component
 {
 	
+	
 	state = 
 	{
 		viewport : {
-		latitude: 45.4211,
-		longitude : -75.6903, 
+		latitude: 23.0225,
+		longitude : 72.5714, 
 		zoom : 10,
-		width: 400,
-		height: 400
-		}
+		width: "100vw",
+		height: "100vh"
+		},
+		
 	};
                
 	
 	render(){
-		return(
-			<div>
-				<ReactMapGL {...this.state.viewport} onViewportChange={(viewport) => this.setState({viewport})} mapboxApiAccessToken = {process.env.local}/>
+			return(
+				<div>
+				<ReactMapGL {...this.state.viewport} onViewportChange={(viewport) => this.setState({viewport})} mapboxApiAccessToken = "pk.eyJ1IjoiZGtwMTkwMyIsImEiOiJjazhya3F3YWMwM2tsM21wbWY3ZTE0OWo1In0.bspO79N0Vc0Fgu1b4bqU5A"/>
 			</div>
 		);
 
