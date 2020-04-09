@@ -22,6 +22,7 @@ class NormalLoginForm extends React.Component {
     const { forgetEmail } = this.state;
     if(!forgetEmail) {
       toast.error('please enter an valid email')
+      return;
     }
     this.setState({forgetEmail: ''});
     this.props.resetPassword(forgetEmail)
@@ -48,18 +49,18 @@ class NormalLoginForm extends React.Component {
     }
     return (
       [
-      <div class="field is-centered">
-        <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
+      <div className="field is-centered">
+        <label className="label">Email</label>
+          <div className="control has-icons-left has-icons-right">
             <input className="input" name="forgetPassword" type="email" placeholder="Email" onChange={this.handelChange} value={this.state.forgetEmail}/>
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
+            <span className="icon is-small is-left">
+              <i className="fas fa-envelope"></i>
             </span>
           </div>
       </div>,
-      <div class="field">
-        <div class="control">
-          <button class="button is-success" onClick={this.handleForgetPassword}>
+      <div className="field">
+        <div className="control">
+          <button className="button is-success" onClick={this.handleForgetPassword}>
             Send Reset Link
           </button>
         </div>
@@ -79,28 +80,28 @@ class NormalLoginForm extends React.Component {
         <Form>
         <div className='columns is-vcentered is-8'>
           <div className='column'>
-            <div class="field">
-            <label class="label">Email</label>
-              <div class="control has-icons-left has-icons-right">
+            <div className="field">
+            <label className="label">Email</label>
+              <div className="control has-icons-left has-icons-right">
                 <Field className="input" name="email" type="email" placeholder="Email" />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-envelope"></i>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-envelope"></i>
                 </span>
               </div>
-              {touched.email && errors.email ? <p class="help is-danger">{errors.email}</p> : null }
+              {touched.email && errors.email ? <p className="help is-danger">{errors.email}</p> : null }
             </div>
-            <div class="field">
-            <label class="label">Password</label>
-              <div class="control has-icons-left">
+            <div className="field">
+            <label className="label">Password</label>
+              <div className="control has-icons-left">
                 <Field className="input" name="password" type="password" placeholder="Password" />
-                <span class="icon is-small is-left">
-                  <i class="fas fa-lock"></i>
+                <span className="icon is-small is-left">
+                  <i className="fas fa-lock"></i>
                 </span>
               </div>
             </div>
-            <div class="field">
-              <div class="control">
-                <button class="button is-success" type="submit">
+            <div className="field">
+              <div className="control">
+                <button className="button is-success" type="submit">
                   Login
                 </button>
                 <a className="is-pulled-right is-center" onClick={this.toggleForget}> Forgot Password</a>
@@ -126,6 +127,7 @@ const LoginForm = withFormik({
     })
   },
   handleSubmit(values, {props, resetForm}) {
+    console.log('hi')
     props.login(values.email, values.password, props.history)
     resetForm()
   },

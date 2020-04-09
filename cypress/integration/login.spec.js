@@ -1,8 +1,14 @@
 describe('Test For Login Page and Forgot Password', function() {
 	context('Login Page', function() {
 		beforeEach(function() {
-			cy.visit('localhost:3000/login');
+            cy.visit('localhost:3000/login');
+            cy.server()
+            cy.route({
+                method: 'Post',
+                url: '/auth/*',
+            }).as('login')
         })
+        
         it('test login no input fileds',function(){
             cy.get('.button.is-success').click()
             cy.url().should('include', '/login')
@@ -21,7 +27,7 @@ describe('Test For Login Page and Forgot Password', function() {
             cy.get('input[name="email"]').type('sagar@gmail.com').should('have.value', 'sagar@gmail.com')
             cy.get('input[name="password"]').type('123456').should('have.value', '123456')
             cy.get('.button.is-success').click()
-            cy.wait(1000)
+            cy.wait('@login')
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;
@@ -32,7 +38,7 @@ describe('Test For Login Page and Forgot Password', function() {
             cy.get('input[name="email"]').type('sags@i.lu').should('have.value', 'sags@i.lu')
             cy.get('input[name="password"]').type('123456').should('have.value', '123456')
             cy.get('.button.is-success').click()
-            cy.wait(1000)
+            cy.wait('@login')
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;
@@ -50,7 +56,6 @@ describe('Test For Login Page and Forgot Password', function() {
             // cy.get('a').eq(6).click() 
             cy.contains('Forgot Password').click()
             cy.get('.button.is-success').contains("Send Reset Link").click()
-            cy.wait(1000)
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;
@@ -67,11 +72,11 @@ describe('Test For Login Page and Forgot Password', function() {
             cy.contains('Forgot Password').click()
             cy.get('input[name="forgetPassword"]').type('sagargmail.com').should('have.value', 'sagargmail.com')
             cy.get('.button.is-success').contains("Send Reset Link").click()
-            cy.wait(1000)
+            cy.wait('@login')
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;
-            expect(toastText).to.equal("please enter an valid email");})
+            expect(toastText).to.equal("Error email not registered");})
  
          });
          it('test forgot password not registered user',function(){
@@ -79,7 +84,7 @@ describe('Test For Login Page and Forgot Password', function() {
             cy.contains('Forgot Password').click()
             cy.get('input[name="forgetPassword"]').type('sag@gmal.com').should('have.value', 'sag@gmal.com')
             cy.get('.button.is-success').contains("Send Reset Link").click()
-            cy.wait(1000)
+            cy.wait('@login')
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;
@@ -91,7 +96,7 @@ describe('Test For Login Page and Forgot Password', function() {
             cy.contains('Forgot Password').click()
             cy.get('input[name="forgetPassword"]').type('sagar@gmail.com').should('have.value', 'sagar@gmail.com')
             cy.get('.button.is-success').contains("Send Reset Link").click()
-            cy.wait(1000)
+            cy.wait('@login')
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;
@@ -104,7 +109,7 @@ describe('Test For Login Page and Forgot Password', function() {
             cy.contains('Forgot Password').click()
             cy.get('input[name="forgetPassword"]').type('manupanday1998@gmail.com').should('have.value', 'manupanday1998@gmail.com')
             cy.get('.button.is-success').contains("Send Reset Link").click()
-            cy.wait(1000)
+            cy.wait('@login')
             cy.get('.Toastify__toast-body').invoke('text')
             .then((text)=>{
             const toastText = text;

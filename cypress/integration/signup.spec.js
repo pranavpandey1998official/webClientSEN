@@ -1,7 +1,8 @@
 describe('Test For Sign Up Page', function() {
 	context('SignUp', function() {
 		beforeEach(function() {
-			cy.visit('localhost:3000/signUp');
+            cy.visit('localhost:3000/signUp');
+            
 		})
 		it('test signup no input fileds',function(){
                 cy.get('.button.is-success').contains("Submit").click()
@@ -71,19 +72,23 @@ describe('Test For Sign Up Page', function() {
             });
             it('test SignUp already registered email',function(){
                 // cy.get('a').eq(6).click() 
+                cy.server()
+                cy.route({
+                    method: 'Post',
+                    url: '/auth/*',
+                }).as('login')
                 cy.get('input[name="firstName"]').type('Sagar').should('have.value', 'Sagar')
                 cy.get('input[name="lastName"]').type('Singh').should('have.value', 'Singh')
                 cy.get('input[name="email"]').type('manupanday1998@gmail.com').should('have.value', 'manupanday1998@gmail.com')
-                cy.get('input[name="password"]').type('123456').should('have.value', '123456')
-                cy.get('input[name="confirmPassword"]').type('123456').should('have.value', '123456')
+                cy.get('input[name="password"]').type('123456@La').should('have.value', '123456@La')
+                cy.get('input[name="confirmPassword"]').type('123456@La').should('have.value', '123456@La')
                 cy.get('.button.is-success').contains("Submit").click()
-                cy.wait(1000)
+                cy.wait('@login')
                 cy.get('.Toastify__toast-body').invoke('text')
                 .then((text)=>{
                 const toastText = text;
                 expect(toastText).to.equal("email already exists");})
                 cy.url().should('include', '/signUp')
-     
              });
             //  it('test SignUp valid credentials',function(){
             //     // cy.get('a').eq(6).click() 
