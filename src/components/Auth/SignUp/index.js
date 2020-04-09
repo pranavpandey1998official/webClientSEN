@@ -91,7 +91,10 @@ const SignUp = withFormik({
 	},
 	validationSchema: Yup.object().shape({
 		email: Yup.string().email('Please enter a valid email').required(),
-		password: Yup.string().required('password cannot be empty'),
+		password: Yup.string().required('Please Enter your password').matches(
+		  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+		  "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+		),
 		firstName: Yup.string().required('first name cannot be empty'),
 		lastName: Yup.string().required('last name cannot be empty'),
 		confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
