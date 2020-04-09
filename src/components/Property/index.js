@@ -13,12 +13,10 @@ class Extended extends Component {
   constructor(props){
     super(props)
     this.state={
-      property:null
+      properties:[]
     }
   }
 
-  
-  
 
   async componentDidMount() {
     const carousels = bulmaCarousel.attach('#carousel-demo', {
@@ -32,22 +30,14 @@ class Extended extends Component {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    this.setState({property: data.property});
+    this.setState({properties: data.property});
   }
   
   render() {
     return (
-      <div class="container" >
-       
-        <div class="block" style={{alignContent:"center",display:"inline-block"} }>
-          <div class="level-left">
-          <h1 class="title is-4" style={{ paddingLeft: 40 }}>
-            Shiva Bungalows</h1>
-          
-            &nbsp;&nbsp;
-            <i className="fas fa-building" />
-</div>        </div>
+      <div class="container">
         
+       
         <section class="section" style={{height:400 ,width:500,padding:0}} style={{overflow:"hidden"}}>
         <div id="carousel-demo" class="carousel has-text-centered" style={{overflow:"hidden"}} >
         
@@ -67,10 +57,38 @@ class Extended extends Component {
         </section>
         
 
+     {this.state.properties.map((property)=>(
+       <div class="container">
+      <div class="block" style={{alignContent:"center",display:"inline-block"} }>
+          <div class="level">
+            <div class="level-left">
+          <h1 class="title is-3 " style={{ textAlign:"center" }}>
+            Shiva Bungalows  </h1>
+            </div>
+          <div class="level-right">
+            <span class="icon">
+            <i className="far fa-star" />
+            </span>
+            </div>
+          </div>
+          <div class="tags">
+           
+          <span class="tag is-primary"  >RARP certified</span> 
+          <span class="tag is-success">For SALE</span>
+          <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+         <div class="tags has-addons">
+           <span class="tag is-dark">Furnished</span>
+             <span class="tag is-info">{property.furnished}</span>
+           </div>
+        </div>
+         </div>
+          </div>
+          
+         </div>
        
-
-
-
+     
+        
         <div class="block">
           <nav class="navbar">
             <div class="nav-menu is-active">
@@ -84,15 +102,15 @@ class Extended extends Component {
           </nav>
         </div>
         <div class="block">
-          <section id="Description" class="hero  is-light ">
+          <section id="Description" class="hero  is-light " style={{border:"1px"}}>
             <div class="hero-body">
 
               <h1 class="title" style={{ MarginTop: "0px" }}>
                 Description
-      </h1>
+               </h1>
               <p>
                 Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes
-      </p>
+              </p>
 
             </div>
           </section>
@@ -101,29 +119,29 @@ class Extended extends Component {
 
               <h1 class="title">
                 Details
-      </h1>
+              </h1>
               <div class='container'>
                 <div class="content">
                   <div class="level">
                     <div class="level-left">
                       <ul>
-                        <li><strong>Plot Area:</strong> 500 sq.ft </li>
-                        <li><strong>Bathrooms:</strong> 3</li>
-                        <li><strong>Bedrooms:</strong> 2</li>
+                        <li><strong>Plot Area:</strong> {property.totalSqft} </li>
+                        <li><strong>Bathrooms:</strong> {property.noOfBathrooms}</li>
+                        <li><strong>Bedrooms:</strong> {property.noOfBedrooms}</li>
                       </ul>
                     </div>
                     <div class="level-center">
                       <ul>
                         <li><strong>Property Age:</strong> 5 year(s)</li>
-                        <li><strong>Price:</strong> 15,000</li>
+                        <li><strong>Price:</strong> {property.price}</li>
                         <li><strong>Pincode:</strong> 382007</li>
                       </ul>
                     </div>
                     <div class="level-right">
                       <ul>
-                        <li><strong>City:</strong> Ahmedabad</li>
+                        <li><strong>City:</strong> {property.city}</li>
                         <li><strong>Property Owner:</strong> SEN</li>
-                        <li><strong>Contact:</strong> 9664855492</li>
+                        <li><strong>Contact:</strong>{property.ownerPhoneNumber}</li>
                       </ul>
                     </div>
                   </div>
@@ -132,12 +150,21 @@ class Extended extends Component {
 
             </div>
           </section>
-          <section id="Facilties" class="hero  is-light ">
+          <section id="Facilities" class="hero  is-light ">
             <div class="hero-body">
 
               <h1 class="title" style={{ MarginTop: "0px" }}>
                 Aminent Facilities
-      </h1>
+            </h1>
+            <div class="content">
+            <div class="level-left">
+                      <ul>
+                        <li><strong>Swimming pool</strong> </li>
+                        <li><strong>Basement</strong></li>
+                        <li><strong>Gym</strong> </li>
+                      </ul>
+                    </div>
+            </div>
 
 
             </div>
@@ -157,8 +184,10 @@ class Extended extends Component {
           </section>
 
         </div>
-      </div>
-    );
+        </div>
+        ))}
+</div>
+    )
   }
 }
 
