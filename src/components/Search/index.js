@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 import { SERVER_URL } from '../../utils/constants';
 
-class Search extends Component {
+class Search extends Component 
+{
     
     constructor(props) {
         super(props);
