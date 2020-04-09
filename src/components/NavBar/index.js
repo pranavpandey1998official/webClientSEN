@@ -63,9 +63,6 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 					<Link className="navbar-item" to='/Blog' key={'blog'}>
 						Blog
 					</Link>
-					<Link className="navbar-item" to='/MapView' key={'mapview'}>
-						Map
-					</Link>
 				</div>
 
 				<div className="navbar-end">
