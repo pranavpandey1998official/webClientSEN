@@ -72,21 +72,21 @@ describe('Test For Sign Up Page', function() {
                 cy.url().should('include', '/signUp')
      
              });
-             it('test SignUp valid credentials',function(){
-                // cy.get('a').eq(6).click() 
-                cy.get('input[name="firstName"]').type('Sagar').should('have.value', 'Sagar')
-                cy.get('input[name="lastName"]').type('Singh').should('have.value', 'Singh')
-                cy.get('input[name="email"]').type('new@gmail.com').should('have.value', 'new@gmail.com')
-                cy.get('input[name="password"]').type('lol').should('have.value', 'lol')
-                cy.get('input[name="confirmPassword"]').type('lol').should('have.value', 'lol')
-                cy.get('.button.is-success').contains("Submit").click()
-                cy.wait(1000)
-                cy.get('.Toastify__toast-body').invoke('text')
-                .then((text)=>{
-                const toastText = text;
-                expect(toastText).to.equal("User Has Been SuccessFully Created Please Verify Your Email");})
-                cy.url().should('include', '/signUp')
+            //  it('test SignUp valid credentials',function(){
+            //     // cy.get('a').eq(6).click() 
+            //     cy.get('input[name="firstName"]').type('Sagar').should('have.value', 'Sagar')
+            //     cy.get('input[name="lastName"]').type('Singh').should('have.value', 'Singh')
+            //     cy.get('input[name="email"]').type('new@gmail.com').should('have.value', 'new@gmail.com')
+            //     cy.get('input[name="password"]').type('lol').should('have.value', 'lol')
+            //     cy.get('input[name="confirmPassword"]').type('lol').should('have.value', 'lol')
+            //     cy.get('.button.is-success').contains("Submit").click()
+            //     cy.wait(1000)
+            //     cy.get('.Toastify__toast-body').invoke('text')
+            //     .then((text)=>{
+            //     const toastText = text;
+            //     expect(toastText).to.equal("User Has Been SuccessFully Created Please Verify Your Email");})
+            //     cy.url().should('include', '/signUp')
      
-             });
+            //  });
 	});
 })
