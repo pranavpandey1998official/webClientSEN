@@ -13,6 +13,7 @@
     "@types/mapbox-gl": "^1.8.3",
     "axios": "^0.19.2",
     "bulma": "^0.8.0",
+    "bulma-carousel": "^4.0.4",
     "formik": "^2.1.4",
     "mapbox-gl": "^1.9.1",
     "react": "^16.12.0",
