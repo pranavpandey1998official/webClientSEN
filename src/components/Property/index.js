@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { SERVER_URL } from '../../utils/constants';
-import bulmaCarousel from 'bulma-carousel/dist/js/bulma-carousel.min.js';
-
-
-
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {Carousel} from 'react-responsive-carousel';
 
 
 class Extended extends Component {
@@ -19,47 +17,26 @@ class Extended extends Component {
 
 
   async componentDidMount() {
-    const carousels = bulmaCarousel.attach('#carousel-demo', {
-      slidesToScroll: 1,
-      slidesToShow: 1,
-      infinite:true,
-      
-    });
+    
     const propertyId= this.props.match.params.id;
+    
     const url = SERVER_URL + '/property/'+propertyId;
+   
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    console.log(url);
     this.setState({properties: data.property});
   }
   
   render() {
+    
     return (
       <div class="container">
-        
        
-        <section class="section" style={{height:400 ,width:500,padding:0}} style={{overflow:"hidden"}}>
-        <div id="carousel-demo" class="carousel has-text-centered" style={{overflow:"hidden"}} >
-        
-          <div class="item-1 ">
-          <img className="is-background is-centered" style={{height:400,width:600}} src="http://www.hdnicewallpapers.com/Walls/Big/House%20and%20Bungalow/Fabulous_Unique_Home_HD_Wallpapers.jpg" alt=""  />
-
-          </div>
-          <div class="item-2">
-          <img className="is-background is-centered" style={{height:400,width:600}} src="https://wikiki.github.io/images/singer.jpg" alt="" />
-
-          </div>
-          <div class="item-3">
-          <img className="is-background is-centered"  style={{height:400,width:600}} src="https://wikiki.github.io/images/singer.jpg" alt=""/>
-        </div>  
-          </div>
-          
-        </section>
-        
-
+       
      {this.state.properties.map((property)=>(
        <div class="container">
-      <div class="block" style={{alignContent:"center",display:"inline-block"} }>
+      <div class="box"> 
           <div class="level">
             <div class="level-left">
           <h1 class="title is-3 " style={{ textAlign:"center" }}>
@@ -75,6 +52,7 @@ class Extended extends Component {
            
           <span class="tag is-primary"  >RARP certified</span> 
           <span class="tag is-success">For SALE</span>
+          
           <div class="field is-grouped is-grouped-multiline">
         <div class="control">
          <div class="tags has-addons">
@@ -83,12 +61,29 @@ class Extended extends Component {
            </div>
         </div>
          </div>
-          </div>
-          
-         </div>
+        </div>
+           </div>
+         <div class="block" >
+         <Carousel infiniteLoop useKeyboardArrows autoPlay width="600px">
+        <div >
+      <img src={SERVER_URL + '/' + property.imagePath} />
+      <p className="legend">Legend 1</p>  
+    </div>
+    <div >
+      <img src="http://lorempixel.com/output/cats-q-c-640-480-2.jpg" />
+      <p className="legend">Legend 2</p>
+    </div>
+    <div >
+      <img src="http://lorempixel.com/output/cats-q-c-640-480-3.jpg" />
+      <p className="legend">Legend 3</p>
+    </div>
+    <div >
+      <img src="http://lorempixel.com/output/cats-q-c-640-480-4.jpg" />
+      <p className="legend">Legend 4</p>
+    </div>
+        </Carousel>
+        </div>
        
-     
-        
         <div class="block">
           <nav class="navbar">
             <div class="nav-menu is-active">
