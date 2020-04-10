@@ -21,7 +21,7 @@ import LandingPage from './LandingPage';
 import ResetPassword from './Auth/Reset';
 import Search from './Search';
 import NotAvailable from './NotAvailable';
-import Property from './Property';
+import MapView from './MapView';
 
 
 class App extends Component {
@@ -69,12 +69,19 @@ class App extends Component {
                 <Route path="/search">
                   <NotAvailable />
                 </Route>
-                <Route path="/property/:id">
+                {/* <Route path="/property/:id">
                   <Property />
+                </Route> */}
+                <Route path="/mapview">
+                  <MapView />
+
                 </Route>
+                {/* </Route> */}
+                
               </Switch>
+      
               </Route>
-            </Switch>
+          </Switch>
           <ToastContainer />
         </Router>
     )
