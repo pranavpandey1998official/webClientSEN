@@ -13,7 +13,7 @@ const amenitiesOptions = [
 ];
 
 const typeOptions = [
-	{ value: "appartment", label: "Appartment" },
+	{ value: "flat", label: "Flat" },
 	{ value: "bungalow", label: "Bungalow" },
 	{ value: "any", label: "Any" },
 ];
@@ -236,11 +236,12 @@ const Filter = withFormik({
 				max: price[1],
 				min: price[0]
 			},
-			type,
+			type: type && type.value,
 		}
 		amenities.forEach((item) => {
 			body[item.value] = true;
 		});
+		props.setLoading();
 
 		const URL = SERVER_URL + '/property/filter';
 		const response = await fetch(URL, {

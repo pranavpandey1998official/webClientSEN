@@ -9,6 +9,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             properties: [],
             visible: 3
         }          
@@ -22,19 +23,40 @@ class Search extends Component {
     }
 
     setProperty = (property) => {
-        this.setState({ properties: [...property] });
+        this.setState({ properties: [...property], loading: false });
     } 
 
     loadmore = () => {
         this.setState({ visible: this.state.visible + 4 })
     }
 
-    renderProperties = () => {
+    renderFooter = () => {
         const { properties } = this.state;
-        if (!properties.length) return (<div> loading....</div>)
+        if (!properties.length) {
+            return (
+                <div style={{textAlign: "center",fontFamily: 'Pacifico',fontSize: "2.5em"}} > 
+                
+                    Sorry try another filter
+                </div>
+            )
+        }
+        return (
+        <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
+            <a class="button is-primary" onClick={this.loadmore}>load more </a>
+        </div>)
+    }
+
+    renderProperties = () => {
+        const { properties, loading } = this.state;
+        if(loading) return (
+            <div className=" has-text-success" style={{textAlign: "center"}}>
+                <i className="fas fa-spinner fa-pulse fa-3x"></i>
+            </div>
+        );
+        
 
         return (
-            <div class="container" style={{ marginLeft: 0 }}>
+           <>
            { properties.slice(0, this.state.visible).map((property, i) => (
                 <Property 
                     key={property.propertyId}
@@ -51,10 +73,8 @@ class Search extends Component {
                     furnished={property.furnished}
                     imageURL={SERVER_URL + '/' + property.imagePath}
                 />))}
-                 <div class="block" style={{ textAlign: 'center' }}>
-                     <a class="button is-primary" onClick={this.loadmore}>load more </a>
-                </div>
-        </div>
+                {this.renderFooter()}
+            </>
         )
 
     }
@@ -65,11 +85,14 @@ class Search extends Component {
                 <div style={{ position: "fixed" }}>
                     <Filter 
                         setProperty ={this.setProperty}
+                        setLoading ={ () =>  {this.setState({loading: true})}}
                     />
                 </div>
                 </div>
                 <div className="column">
+                <div class="container" style={{ marginLeft: 0 }}>
                     {this.renderProperties()}
+                </div>
                 </div>
             </div>
         );
