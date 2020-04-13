@@ -15,7 +15,7 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 		if (isAuthenticated) {
 			return (
 				<div className="navbar-item">
-					<Link className="navbar-item" to='/wishList'>
+					<Link  className="navbar-item" to='/wishList'>
 						<span className="icon has-text-info is-medium">
 						<i className="fas fa-list fa-lg"></i>
 				  		</span>
