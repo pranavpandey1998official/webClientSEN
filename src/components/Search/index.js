@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Property from './Property';
+//import Property from './Property';
+import Property from '../Property_shared/Property';
 import Filter from './Filter';
 
 import { SERVER_URL } from '../../utils/constants';

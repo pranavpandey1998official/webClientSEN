@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Property from './Property';
-// import Filter from './Filter';
+import Property from '../Property_shared/Property';
 
 import { SERVER_URL } from '../../utils/constants';
 
@@ -11,9 +10,8 @@ class WishList extends Component {
         this.state = {
             loading: true,
             properties: [],
-            visible: 3
         }          
-    }
+     }
 
     async componentDidMount() {
         const url = SERVER_URL + '/property';
@@ -25,26 +23,6 @@ class WishList extends Component {
     setProperty = (property) => {
         this.setState({ properties: [...property], loading: false });
     } 
-
-    loadmore = () => {
-        this.setState({ visible: this.state.visible + 4 })
-    }
-
-    renderFooter = () => {
-        // const { properties } = this.state;
-        // if (!properties.length) {
-        //     return (
-        //         <div style={{textAlign: "center",fontFamily: 'Pacifico',fontSize: "2.5em"}} > 
-                
-        //             Sorry try another filter
-        //         </div>
-        //     )
-        // }
-        return (
-        <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
-            <a class="button is-primary" onClick={this.loadmore}>load more </a>
-        </div>)
-    }
 
     renderProperties = () => {
         const { properties, loading } = this.state;
@@ -73,28 +51,22 @@ class WishList extends Component {
                     furnished={property.furnished}
                     imageURL={SERVER_URL + '/' + property.imagePath}
                 />))}
-                {this.renderFooter()}
             </>
         )
 
     }
     render() {
         return (
-            // <div className="columns">
-            //     <div className="column is-one-quarter is-offset-1">
-            //     <div style={{ position: "fixed" }}>
-            //         <Filter 
-            //             setProperty ={this.setProperty}
-            //             setLoading ={ () =>  {this.setState({loading: true})}}
-            //         />
-            //     </div>
-            //     </div>
                 <div className="column">
-                <div class="container" style={{ marginLeft: 0 }}>
+                 <div className="column is-centered">
+							<h1 class="is-size-2">
+								Your Wishlisted Properties
+							</h1>
+                 <div class="container" style={{ marginLeft: 0 }}>
                     {this.renderProperties()}
+                 </div>
+                 </div>
                 </div>
-                </div>
-            // </div>
         );
     }
 }
