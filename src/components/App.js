@@ -22,6 +22,7 @@ import ResetPassword from './Auth/Reset';
 import Search from './Search';
 import NotAvailable from './NotAvailable';
 import MapView from './MapView';
+import Property from './Property';
 
 
 class App extends Component {
@@ -71,6 +72,9 @@ class App extends Component {
                 </Route>
                 <Route path="/MapView">
                   <MapView />
+                </Route>
+                <Route path="/property/:id">
+                  <Property />
                 </Route>
               </Switch>
               </Route>
