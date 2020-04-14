@@ -21,6 +21,7 @@ import LandingPage from './LandingPage';
 import ResetPassword from './Auth/Reset';
 import Search from './Search';
 import NotAvailable from './NotAvailable';
+import MapView from './MapView';
 
 
 class App extends Component {
@@ -67,6 +68,9 @@ class App extends Component {
                 </Route>
                 <Route path="/search">
                   <NotAvailable />
+                </Route>
+                <Route path="/MapView">
+                  <MapView />
                 </Route>
               </Switch>
               </Route>
