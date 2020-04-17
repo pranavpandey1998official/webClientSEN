@@ -40,15 +40,18 @@ class Extended extends Component {
     const { property } = this.state;
 
     if (!property) {
-      return <div>loding</div>
+      return <progress class="progress is-medium is-dark" max="100">45%</progress>
+
+  
+  
     }
 
     return (
       <div class="container">
         <div class="box">
           <div class="level">
-            <div class="level-left">
-              <h1 class="title is-3 " style={{ textAlign: "center" }}>
+            <div class="level-left ">
+              <h1 class="title is-3  " style={{ paddingBottom:"0px"}}>
                 Shiva Bungalows  </h1>
             </div>
             <div class="level-right">
@@ -57,10 +60,14 @@ class Extended extends Component {
               </span>
             </div>
           </div>
+          <div class="level-item level-left" style={{paddingBottom:"10px"}}>
+          <i className="fas fa-map-marker-alt" />&nbsp;
+          <p>Dhirubhai Ambani Institute of Information and Communication Technology</p>
+          </div>
           <div class="tags">
 
-            <span class="tag is-primary"  >RARP certified</span>
-            <span class="tag is-success">For SALE</span>
+            <span class="tag is-primary"  >RERA certified</span>
+            <span class="tag is-success">Verified</span>
 
             <div class="field is-grouped is-grouped-multiline">
               <div class="control">
@@ -73,9 +80,9 @@ class Extended extends Component {
           </div>
         </div>
         <div class="block" >
-          <div className="columns">
-            <div className="column">
-              <Carousel showArrows={true} infiniteLoop autoPlay showStatus={false} width="600px" >
+          <div className="columns is-gapless">
+          <div class="column ">
+              <Carousel showArrows={true} infiniteLoop autoPlay showStatus={false} useKeyboardArrows width="500px" >
                 {property.images.map((image) => (
                   <figure key={image.photoId} className="image is-4by3">
                     <img src={`${SERVER_URL}/${image.imagePath}`} />
@@ -84,42 +91,120 @@ class Extended extends Component {
               </Carousel>
             </div>
             <div className="column">
-              
-          </div>
-        </div>
+            <div class="tile is-ancestor">
+  <div class="tile is-parent is-vertical">
+    <article class="tile is-child box">
+      <p >Area: </p>
+      <div class="level-item">
+      <p class="subtitle"><strong>1,945</strong></p>
+      <span style={{ marginBottom: 0 }}><i>&nbsp;sq.ft</i></span>
+      </div>  
+    </article>
+  
+  
+    <article class="tile is-child box">
+    <p>Price: </p>
+      <div class="level-item">
+      <p class="subtitle"><strong>Rs 1,945</strong></p>
+      
+      </div>  
+    </article>
+ 
+  
+    <article class="tile is-child box">
+    <p>Transaction Type: </p>
+      <div class="level-item">
+      <p class="subtitle"><strong>Rent</strong></p>
+      
+      </div>  
+    </article>
+  </div>
+  <div class="tile is-parent is-vertical">
+    <article class="tile is-child box">
+    <p>Configuration: </p>
+      <div class="level-item">
+      <p ><strong> 3 bedrooms,3 baths and other</strong></p>
+      
+      </div> 
+    </article>
+  
+  
+    <article class="tile is-child box">
+    <p>City: </p>
+      <div class="level-item">
+      <p class="subtitle"><strong> Ahmedabad</strong></p>
+      
+      </div> 
+    </article>
+ 
+  
+    <article class="tile is-child box">
+    <p>Property Age: </p>
+      <div class="level-item">
+      <p class="subtitle"><strong> 5 year(s) old</strong></p>
+      
+      </div> 
+    </article>
+  </div>
+  
 
+
+
+
+
+</div>
+ 
+ 
+ </div>
+
+
+</div>
+
+</div>
+
+      
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+          <div class="nav-menu is-active " style={{alignItems:"center" }}>
+          <a  class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
       </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+      <a href="#Description" style={{padding:20,color:"white"}} >DESCRIPTION</a>       
+            <a href="#Details"  style={{padding:20,color:"white"}}>DETAILS</a>
+            <a href="#Facilities"style={{padding:20,color:"white"}} >FACILITIES</a>
+            <a href="#Location"  style={{padding:20,color:"white"}}>LOCATION</a>
+            <a href="#Reviews"  style={{padding:20,color:"white"}}>REVIEWS</a>
+</div>
 
-      <div class="block">
-        <nav class="navbar">
-          <div class="nav-menu is-active">
-            <a href="#Description" class="nav-item is-tab" style={{ padding: 20 }}>DESCRIPTION</a>
-            <a href="#Details" class="nav-item is-tab" style={{ padding: 20 }}>DETAILS</a>
-            <a href="#Facilities" class="nav-item is-tab" style={{ padding: 20 }}>FACILITIES</a>
-            <a href="#Location" class="nav-item is-tab" style={{ padding: 20 }}>LOCATION</a>
-            <a href="#Reviews" class="nav-item is-tab" style={{ padding: 20 }}>REVIEWS</a>
-
-          </div>
+</div>
+         
         </nav>
-      </div>
+      
       <div class="block">
-        <section id="Description" class="hero  is-light " style={{ border: "1px" }}>
+        <section id="Description" class="hero  is-light " >
           <div class="hero-body">
 
-            <h1 class="title" style={{ MarginTop: "0px" }}>
-              Description
+            <h1 class="title" style={{ MarginTop: "0px" ,fontFamily: 'Pacifico' }}>
+              Description:
                </h1>
             <p>
               Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes
               </p>
 
           </div>
+        
         </section>
-        <section id="Details" class="hero  is-light ">
+        <div class="is-divider" data-content="OR"></div>
+        
+        <section id="Details" class="hero  is-light"  style={{borderTop:"1px solid #ccd1d9"}}>
           <div class="hero-body">
 
-            <h1 class="title">
-              Details
+            <h1 class="title" style={{ MarginTop: "0px" ,fontFamily: 'Pacifico' }}>
+              Details:
               </h1>
             <div class='container'>
               <div class="content">
@@ -151,11 +236,12 @@ class Extended extends Component {
 
           </div>
         </section>
-        <section id="Facilities" class="hero  is-light ">
+       
+        <section id="Facilities" class="hero  is-light " style={{borderTop:"1px solid #ccd1d9"}} >
           <div class="hero-body">
 
-            <h1 class="title" style={{ MarginTop: "0px" }}>
-              Aminent Facilities
+            <h1 class="title" style={{ MarginTop: "0px" ,fontFamily: 'Pacifico' }}>
+              Aminent Facilities:
             </h1>
             <div class="content">
               <div class="level-left">
@@ -170,11 +256,11 @@ class Extended extends Component {
 
           </div>
         </section>
-        <section id="Location" class="hero  is-light ">
+        <section id="Location" class="hero  is-light " style={{borderTop:"1px solid #ccd1d9"}}>
           <div class="hero-body">
 
-            <h1 class="title">
-              Location
+            <h1 class="title" style={{ MarginTop: "0px" ,fontFamily: 'Pacifico' }}>
+              Location:
             </h1>
             <div class='card-content is-flex' style={{ justifyContent: "center" }}>
             <ReactMapGL {...this.state.viewport}
