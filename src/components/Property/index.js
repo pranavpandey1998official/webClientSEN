@@ -52,7 +52,7 @@ class Extended extends Component {
           <div class="level">
             <div class="level-left ">
               <h1 class="title is-3  " style={{ paddingBottom:"0px"}}>
-                Shiva Bungalows  </h1>
+                {property.propertyName}  </h1>
             </div>
             <div class="level-right">
               <span class="icon">
@@ -62,7 +62,7 @@ class Extended extends Component {
           </div>
           <div class="level-item level-left" style={{paddingBottom:"10px"}}>
           <i className="fas fa-map-marker-alt" />&nbsp;
-          <p>Dhirubhai Ambani Institute of Information and Communication Technology</p>
+          <p>{property.address}</p>
           </div>
           <div class="tags">
 
@@ -96,7 +96,7 @@ class Extended extends Component {
     <article class="tile is-child box">
       <p >Area: </p>
       <div class="level-item">
-      <p class="subtitle"><strong>1,945</strong></p>
+      <p class="subtitle"><strong>{property.totalSqft}</strong></p>
       <span style={{ marginBottom: 0 }}><i>&nbsp;sq.ft</i></span>
       </div>  
     </article>
@@ -105,7 +105,7 @@ class Extended extends Component {
     <article class="tile is-child box">
     <p>Price: </p>
       <div class="level-item">
-      <p class="subtitle"><strong>Rs 1,945</strong></p>
+      <p class="subtitle"><strong>Rs {property.price}</strong></p>
       
       </div>  
     </article>
@@ -114,16 +114,16 @@ class Extended extends Component {
     <article class="tile is-child box">
     <p>Transaction Type: </p>
       <div class="level-item">
-      <p class="subtitle"><strong>Rent</strong></p>
+      <p class="subtitle"><strong>{property.option}</strong></p>
       
       </div>  
     </article>
   </div>
   <div class="tile is-parent is-vertical">
     <article class="tile is-child box">
-    <p>Configuration: </p>
+    <p>Living-Index: </p>
       <div class="level-item">
-      <p ><strong> 3 bedrooms,3 baths and other</strong></p>
+      <p ><strong style={{fontSize:20}}> {property.livingIndex}</strong></p>
       
       </div> 
     </article>
@@ -132,7 +132,7 @@ class Extended extends Component {
     <article class="tile is-child box">
     <p>City: </p>
       <div class="level-item">
-      <p class="subtitle"><strong> Ahmedabad</strong></p>
+      <p class="subtitle"><strong> {property.city}</strong></p>
       
       </div> 
     </article>
@@ -141,7 +141,7 @@ class Extended extends Component {
     <article class="tile is-child box">
     <p>Property Age: </p>
       <div class="level-item">
-      <p class="subtitle"><strong> 5 year(s) old</strong></p>
+      <p class="subtitle"><strong> {property.propertyAge} year(s) old</strong></p>
       
       </div> 
     </article>
@@ -192,13 +192,13 @@ class Extended extends Component {
               Description:
                </h1>
             <p>
-              Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes
+             {property.description}
               </p>
 
           </div>
         
         </section>
-        <div class="is-divider" data-content="OR"></div>
+     
         
         <section id="Details" class="hero  is-light"  style={{borderTop:"1px solid #ccd1d9"}}>
           <div class="hero-body">
@@ -218,15 +218,15 @@ class Extended extends Component {
                   </div>
                   <div class="level-center">
                     <ul>
-                      <li><strong>Property Age:</strong> 5 year(s)</li>
+                      <li><strong>Property Age:</strong> {property.propertyAge} year(s)</li>
                       <li><strong>Price:</strong> {property.price}</li>
-                      <li><strong>Pincode:</strong> 382007</li>
+                      <li><strong>Pincode:</strong> 380059</li>
                     </ul>
                   </div>
                   <div class="level-right">
                     <ul>
                       <li><strong>City:</strong> {property.city}</li>
-                      <li><strong>Property Owner:</strong> SEN</li>
+                      <li><strong>Property Owner:</strong> Chandulal</li>
                       <li><strong>Contact:</strong>{property.ownerPhoneNumber}</li>
                     </ul>
                   </div>
@@ -247,7 +247,7 @@ class Extended extends Component {
               <div class="level-left">
                 <ul>
                   <li><strong>Swimming pool</strong> </li>
-                  <li><strong>Basement</strong></li>
+                  <li><strong>Basement Parking</strong></li>
                   <li><strong>Gym</strong> </li>
                 </ul>
               </div>
