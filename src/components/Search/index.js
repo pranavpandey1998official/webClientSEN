@@ -3,7 +3,7 @@ import Property from './Property';
 import Filter from './Filter';
 import { withRouter } from 'react-router-dom';
 
-import { SERVER_URL } from '../../utils/constants';
+import { SERVER_URL } from "../../utils/constants";
 
 class Search extends Component {
     
@@ -16,20 +16,20 @@ class Search extends Component {
         }          
     }
 
-    async componentDidMount() {
-        const url = SERVER_URL + '/property';
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setProperty(data.property);
-    }
+	async componentDidMount() {
+		const url = SERVER_URL + "/property";
+		const response = await fetch(url);
+		const data = await response.json();
+		this.setProperty(data.property);
+	}
 
     setProperty = (property) => {
         this.setState({ properties: [...property], loading: false });
     } 
 
-    loadmore = () => {
-        this.setState({ visible: this.state.visible + 4 })
-    }
+	loadmore = () => {
+		this.setState({ visible: this.state.visible + 4 });
+	};
 
     onClickProperty = (id) => {
         this.props.history.push(`/property/${id}`)
@@ -88,13 +88,13 @@ class Search extends Component {
     render() {
         return (
             <div className="columns">
-                <div className="column is-one-quarter is-offset-1">
-                <div style={{ position: "fixed" }}>
-                    <Filter 
-                        setProperty ={this.setProperty}
-                        setLoading ={ () =>  {this.setState({loading: true})}}
-                    />
-                </div>
+                <div className="column is-narrow is-offset-1">
+                    <div style={{ position: "sticky", top:-12}}>
+                        <Filter 
+                            setProperty ={this.setProperty}
+                            setLoading ={ () =>  {this.setState({loading: true})}}
+                        />
+                    </div>
                 </div>
                 <div className="column">
                 <div class="container" style={{ marginLeft: 0 }}>
