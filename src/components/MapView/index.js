@@ -1,8 +1,10 @@
 import React, { Component} from 'react';
-import ReactMapGL, {Marker } from 'react-map-gl';
+import ReactMapGL, {Marker, Popup } from 'react-map-gl';
 import { SERVER_URL } from '../../utils/constants';
- 
- 
+import { withRouter } from 'react-router-dom';
+
+import image from '../../assets/location/ahmedabad.svg';
+
  
 class MapView extends Component
 {
@@ -15,8 +17,8 @@ class MapView extends Component
         
     }
      
- 
-    
+        
+        
     
     state = 
     {
@@ -26,13 +28,24 @@ class MapView extends Component
         longitude : 72.5714, 
         zoom : 10,
         width: "100vw",
-        height: "100vh"
+        height: "100vh", 
+        
         },
+        showPopup : false,
+        popupProperty: null,
         
     };
+    onClickPopup = () => {
+                const id = this.state.popupProperty.propertyId;
+                console.log(this.state.popupProperty);
+                this.props.history.push(`/property/${id}`);
+    }
                
     
     render(){
+            const {showPopup} = this.state;
+            const {popupProperty} = this.state;
+            
             return(
             <div>
                 
@@ -48,13 +61,62 @@ class MapView extends Component
                         longitude={parseFloat(property.longitude)}
                         latitude= {parseFloat(property.latitude)}
                         key={propertyId}>
-                        <span className="icon has-text-info">
+                        <span className="icon has-text-info"
+                        onClick = {(e) => {
+                            e.preventDefault();
+                            this.setState({showPopup: true, popupProperty: property});
+                            
+
+                            
+                        }}>
                             <i className="fa fa-home fa-lg" aria-hidden="true"></i>
                         </span>
                     </Marker>
                 )): null}
-                </ReactMapGL>
+
+                        {showPopup && <Popup
+                            latitude={parseFloat(this.state.popupProperty.latitude)}
+                            longitude={parseFloat(this.state.popupProperty.longitude)}
+                            closeButton={true}
+                            closeOnClick={false}
+                            onClose={() => this.setState({showPopup: false})}
+                            anchor="top" >
+                                
+<div class="card" onClick={this.onClickPopup}>
+    <div class="card-image">
+        <figure className="image is-4by3">
+         <img src={`${SERVER_URL}/${this.state.popupProperty.imagePath}`} alt="Property" />
+        </figure>
+    </div>
+    <div class="card-content">
+        <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src={image} alt="Property" />
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
+            <button class="button is-primary">{this.state.popupProperty.propertyName} </button>
+        </div>
+      </div>
+        </div>
+
+        <div class="content" >
+            <button className="button is-link is-rounded">Living Index : {this.state.popupProperty.livingIndex}
+            </button>
+            <button className="button is-danger is-rounded">Bedrooms : {this.state.popupProperty.noOfBedrooms}
+            </button>
+            <button className="button is-info is-rounded">Size : {this.state.popupProperty.totalSqft}
+            </button>
+        </div>
+    </div>
+</div>
+</Popup>
+
+                        }
                 
+                </ReactMapGL>
                 
             </div>
         );
@@ -63,4 +125,4 @@ class MapView extends Component
     
 }
  
-export default MapView;
+export default withRouter(MapView);
