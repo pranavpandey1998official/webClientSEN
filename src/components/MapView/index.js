@@ -2,10 +2,8 @@ import React, { Component} from 'react';
 import ReactMapGL, {Marker, Popup } from 'react-map-gl';
 import { SERVER_URL } from '../../utils/constants';
 import { withRouter } from 'react-router-dom';
+import defaultImage from '../../assets/location/ahmedabad.svg';
 
-import image from '../../assets/location/ahmedabad.svg';
-
- 
 class MapView extends Component
 {
     
@@ -44,15 +42,14 @@ class MapView extends Component
     
     render(){
             const {showPopup} = this.state;
-            const {popupProperty} = this.state;
-            
+
             return(
             <div>
                 
                 
                 <ReactMapGL {...this.state.viewport} 
                     onViewportChange={(viewport) => this.setState({viewport})} 
-                    mapStyle = "mapbox://styles/dkp1903/ck8tqr43i02wy1ipb8qx8ubmt"
+                    mapStyle = "mapbox://styles/dkp1903/ck9gkcrzg078i1iqy13p2p2hp"
                     mapboxApiAccessToken = "pk.eyJ1IjoiZGtwMTkwMyIsImEiOiJjazhya3F3YWMwM2tsM21wbWY3ZTE0OWo1In0.bspO79N0Vc0Fgu1b4bqU5A"
                 >
                 
@@ -65,9 +62,7 @@ class MapView extends Component
                         onClick = {(e) => {
                             e.preventDefault();
                             this.setState({showPopup: true, popupProperty: property});
-                            
-
-                            
+                             
                         }}>
                             <i className="fa fa-home fa-lg" aria-hidden="true"></i>
                         </span>
@@ -92,7 +87,7 @@ class MapView extends Component
         <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <img src={image} alt="Property" />
+          <img src={defaultImage} alt="Property" />
         </figure>
       </div>
       <div class="media-content">
@@ -100,26 +95,21 @@ class MapView extends Component
             <button class="button is-primary">{this.state.popupProperty.propertyName} </button>
         </div>
       </div>
-        </div>
+    </div>
 
-        <div class="content" >
-            <button className="button is-link is-rounded">Living Index : {this.state.popupProperty.livingIndex}
-            </button>
-            <button className="button is-danger is-rounded">Bedrooms : {this.state.popupProperty.noOfBedrooms}
-            </button>
-            <button className="button is-info is-rounded">Size : {this.state.popupProperty.totalSqft}
-            </button>
-        </div>
+    <div class="content" >
+        <button className="button is-link is-rounded">Living Index : {this.state.popupProperty.livingIndex}
+        </button>
+        <button className="button is-danger is-rounded">Bedrooms : {this.state.popupProperty.noOfBedrooms}
+        </button>
+        <button className="button is-info is-rounded">Size : {this.state.popupProperty.totalSqft}
+        </button>
+    </div>
     </div>
 </div>
-</Popup>
-
-                        }
-                
-                </ReactMapGL>
-                
-            </div>
-        );
+</Popup>}
+</ReactMapGL>
+</div>);
  
     }
     
