@@ -3,6 +3,7 @@ import ReactMapGL, {Marker, Popup } from 'react-map-gl';
 import { SERVER_URL } from '../../utils/constants';
 import { withRouter } from 'react-router-dom';
 import defaultImage from '../../assets/location/ahmedabad.svg';
+import { mdiBed } from '../../assets/bed.svg';
 
 class MapView extends Component
 {
@@ -80,7 +81,7 @@ class MapView extends Component
 <div class="card" onClick={this.onClickPopup}>
     <div class="card-image">
         <figure className="image is-4by3">
-         <img src={`${SERVER_URL}/${this.state.popupProperty.imagePath}`} alt="Property" />
+            <img src={`${SERVER_URL}/${this.state.popupProperty.imagePath}`} alt="Property" />
         </figure>
     </div>
     <div class="card-content">
@@ -92,18 +93,41 @@ class MapView extends Component
       </div>
       <div class="media-content">
         <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
-            <button class="button is-primary">{this.state.popupProperty.propertyName} </button>
+            <h1 className="title is-5" style={{ marginBottom: 6 }}>{this.state.popupProperty.propertyName} </h1>
         </div>
       </div>
     </div>
 
     <div class="content" >
-        <button className="button is-link is-rounded">Living Index : {this.state.popupProperty.livingIndex}
-        </button>
-        <button className="button is-danger is-rounded">Bedrooms : {this.state.popupProperty.noOfBedrooms}
-        </button>
-        <button className="button is-info is-rounded">Size : {this.state.popupProperty.totalSqft}
-        </button>
+        <div className="level-item" style={{ justifyContent: 'left'}} >
+            <h1 className="title is-5" style={{ marginBottom: 6 }}> 
+                <i class="fas fa-rupee-sign"></i>
+                <strong> {this.state.popupProperty.price}
+                </strong>
+            </h1>  
+        </div>
+
+        <div className="level-item" style={{ justifyContent: 'left'}}>
+            <h1 className="title is-6" style={{ marginBottom: 6 }}>
+                <i class="fas fa-grin-hearts"></i>
+                <strong> Living Index : {this.state.popupProperty.livingIndex}</strong>
+            </h1> 
+        </div>
+        
+        <div className="level-item" style={{ justifyContent: 'left'}} >
+            <h1 className="title is-6" style={{ marginBottom: 6}} >
+                <i class="fas fa-bed"></i>
+                <strong> {this.state.popupProperty.noOfBedrooms} BHK</strong>
+            </h1> 
+        </div>
+        
+        <div className="level-item" style={{ justifyContent: 'left'}} >
+            <h1 className="title is-6">
+                <i class="fas fa-arrows-alt"></i>
+                <strong> Size: {this.state.popupProperty.totalSqft}</strong>
+            </h1>
+            <span style={{ marginBottom: 0 }}><i>&nbsp;sq.ft</i></span>
+        </div>
     </div>
     </div>
 </div>
