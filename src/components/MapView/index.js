@@ -3,8 +3,6 @@ import ReactMapGL, {Marker, Popup } from 'react-map-gl';
 import { SERVER_URL } from '../../utils/constants';
 import { withRouter } from 'react-router-dom';
 import defaultImage from '../../assets/location/ahmedabad.svg';
-import { mdiBed } from '../../assets/bed.svg';
-
 class MapView extends Component
 {
     
@@ -93,37 +91,38 @@ class MapView extends Component
       </div>
       <div class="media-content">
         <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
-            <h1 className="title is-5" style={{ marginBottom: 6 }}>{this.state.popupProperty.propertyName} </h1>
+            <h1 className="title is-5" style={{marginTop: 13, marginBottom: 6 }}>{this.state.popupProperty.propertyName} </h1>
         </div>
       </div>
     </div>
 
     <div class="content" >
         <div className="level-item" style={{ justifyContent: 'left'}} >
-            <h1 className="title is-5" style={{ marginBottom: 6 }}> 
-                <i class="fas fa-rupee-sign"></i>
-                <strong> {this.state.popupProperty.price}
+            <h1 className="title is-6" style={{ marginBottom: 6 }}> 
+                
+                <i class="fas fa-rupee-sign fa-xs"></i>
+                <strong> Price: Rs {this.state.popupProperty.price}
                 </strong>
             </h1>  
         </div>
 
         <div className="level-item" style={{ justifyContent: 'left'}}>
             <h1 className="title is-6" style={{ marginBottom: 6 }}>
-                <i class="fas fa-grin-hearts"></i>
+                <i class="fas fa-grin-hearts fa-xs"></i>
                 <strong> Living Index : {this.state.popupProperty.livingIndex}</strong>
             </h1> 
         </div>
         
         <div className="level-item" style={{ justifyContent: 'left'}} >
             <h1 className="title is-6" style={{ marginBottom: 6}} >
-                <i class="fas fa-bed"></i>
-                <strong> {this.state.popupProperty.noOfBedrooms} BHK</strong>
+                <i class="fas fa-bed fa-xs"></i>
+                <strong> Bedrooms: {this.state.popupProperty.noOfBedrooms} BHK</strong>
             </h1> 
         </div>
         
         <div className="level-item" style={{ justifyContent: 'left'}} >
             <h1 className="title is-6">
-                <i class="fas fa-arrows-alt"></i>
+                <i class="fas fa-arrows-alt fa-xs"></i>
                 <strong> Size: {this.state.popupProperty.totalSqft}</strong>
             </h1>
             <span style={{ marginBottom: 0 }}><i>&nbsp;sq.ft</i></span>
