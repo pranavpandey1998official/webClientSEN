@@ -13,10 +13,12 @@ const Property = ({
   distanceToNearestSchool,
   furnished,
   imageURL,
+  onClick,
+  id,
 }) =>  {
 
     return (
-          <div className="box">
+          <div className="box" onClick={() => onClick(id)}>
             <article className="media">
               <div className="media-left">
                 <figure className="image is-3x2">

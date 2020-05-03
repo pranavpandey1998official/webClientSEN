@@ -14,7 +14,7 @@ class WishList extends Component {
      }
 
     async componentDidMount() {
-        const url = SERVER_URL + '/property';
+        const url = SERVER_URL + '/wishlist';
         const response = await fetch(url);
         const data = await response.json();
         this.setProperty(data.property);

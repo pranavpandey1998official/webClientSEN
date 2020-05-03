@@ -7,29 +7,29 @@ class Contact extends Component {
          <section className="hero is-fullheight-with-navbar has-text-centered">
             <div className="hero-body">
                <div className="container">
-                  <h1 className="title is-spaced is-1" id='contactTile'>Contact Us</h1>
-                  <h2 className="subtitle is-8 columns is-centered">
+                  <h1 className="title is-spaced is-narrow" id='contactTile'>Contact Us</h1>
+                  <h2 className="subtitle is-narrow columns is-centered is-vcentered">
                      <a
-                        className="icon column is-narrow"
+                        className="icon"
                         href="https://goo.gl/maps/cB5fS21HX7pA4MpW9"
                      >
                         <i className="fas fa-map-marker-alt"></i>
                      </a>
                      <span className="column is-narrow">DA-IICT, Gandhinagar</span>
                   </h2>
-                  <h2 className="subtitle is-4 columns is-centered is-vcentered">
+                  <h2 className="subtitle is-narrow columns is-centered is-vcentered">
                      <a className="icon" href="tel:+9107968262700">
                         <i className="fas fa-phone"></i>
                      </a>
                      <span className="column is-narrow">Phone: (+91) 079-68261700</span>
                   </h2>
-                  <h2 className="subtitle is-4 columns is-centered is-vcentered">
+                  <h2 className="subtitle is-narrow columns is-centered is-vcentered">
                      <a className="icon" href="mailto:info@daiict.ac.in">
                         <i className="fas fa-envelope"></i>
                      </a>
                      <span className="column is-narrow">Email: info@daiict.ac.in</span>
                   </h2>
-                  <h2 className="subtitle is-4">
+                  <h2 className="subtitle is-narrow">
                      <a
                         className="icon is-medium"
                         href="https://facebook.com/daiict"
