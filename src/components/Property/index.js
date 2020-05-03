@@ -5,7 +5,31 @@ import { SERVER_URL } from "../../utils/constants";
 import { Carousel } from "react-responsive-carousel";
 import ReactMapGL, { Marker } from "react-map-gl";
 import Review from "./Review";
+import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
+import { Tooltip } from "@material-ui/core";
+import ReactTimeAgo from 'react-time-ago'
+import JavascriptTimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 import "./style.css";
+
+JavascriptTimeAgo.locale(en)
+
+const useStylesBootstrap = makeStyles((theme) => ({
+    arrow: {
+      color: theme.palette.common.black,
+    },
+    tooltip: {
+      backgroundColor: theme.palette.common.black,
+      fontSize: "14px"
+    },
+}));
+
+function BootstrapTooltip(props) {
+    return <Tooltip arrow classes={useStylesBootstrap()} {...props} />;
+};
 
 class Extended extends Component {
 	constructor(props) {
@@ -15,6 +39,7 @@ class Extended extends Component {
             reviews: [],
             reviewsVisible: 3,
             reviewInput: "",
+            isWishlisted: false,
 			viewport: {
 				latitude: 23.0225,
 				longitude: 72.5714,
@@ -24,16 +49,32 @@ class Extended extends Component {
 			},
 		};
     };
+
+    GetReviews = (reviewUrl) => {
+        axios.get(reviewUrl, {}).then( res => {
+            this.setState({reviews: res.data.reviews})
+        })
+        .catch(err => {
+            if (err.response) {
+                toast.error(err.response.data.message)
+            } else {
+                console.log(err)
+            }
+        })
+    };
     
 	async componentDidMount() {
 		const propertyId = this.props.match.params.id;
 
-		const url = SERVER_URL + "/property/" + propertyId;
+        const propertyUrl = SERVER_URL + "/property/" + propertyId;
+        const reviewUrl = SERVER_URL + "/property_review/" + propertyId;
 
-		const response = await fetch(url);
-		const data = await response.json();
-		this.setState({ property: data.property[0] });
-    }
+        this.GetReviews(reviewUrl)
+
+        axios.get(propertyUrl, {propertyId}).then(res => {
+            this.setState({ property: res.data.property[0], isWishlisted: res.data.isWishlist });
+        })
+    };
     
     viewMore = () => {
 		this.setState({ reviewsVisible: this.state.reviewsVisible + 4 });
@@ -41,23 +82,108 @@ class Extended extends Component {
     
     handleChange = (event) => {
 		this.setState({ reviewInput: event.target.value });
-	};
+    };
 
 	submitReview = () => {
-		console.log(this.state.reviewInput);
-	};
+        const propertyId = this.props.match.params.id;
+
+        const review = {
+            reviewText: this.state.reviewInput,
+            propertyId: propertyId,
+            userId: this.props.user.userId
+        }
+
+        const reviewUrl = SERVER_URL + "/property_review/" + propertyId;
+
+        axios.post(`${SERVER_URL}/property_review`, {review}).then(res => {
+            toast.success("Review added successfully")
+            this.setState({reviewInput: ""});
+            this.GetReviews(reviewUrl);
+        })
+        .catch( err => {
+            if (err.response) {
+                toast.error(err.response.data.message)
+            } else {
+                console.log(err)
+            }
+        })
+    };
+    
+    handleWishlistChange = () => {  
+        const propertyId = this.props.match.params.id;
+        
+        const wishlist = {
+            userId: this.props.user.userId,
+            propertyId: propertyId
+        }
+
+        if(this.state.isWishlisted){
+            axios.delete(`${SERVER_URL}/wishlist/${propertyId}`, {wishlist}).then( res => {
+                this.setState({isWishlisted: false})
+            })
+            .catch( err => {
+                if (err.response) {
+                    toast.error(err.response.data.message)
+                } else {
+                    console.log(err)
+                }
+            })
+        } else {
+            axios.post(`${SERVER_URL}/wishlist`, {wishlist}).then( res => {
+                this.setState({isWishlisted: true})
+            })
+            .catch( err => {
+                if (err.response) {
+                    toast.error(err.response.data.message)
+                } else {
+                    console.log(err)
+                }
+            })
+        }
+    };
+
+    RenderOptions = (reviewId, userId) => {
+        const reviewUrl = SERVER_URL + "/property_review/" + this.props.match.params.id;
+
+        const handleDelete = () => {
+            axios.delete(`${SERVER_URL}/property_review/${reviewId}`, {userId}).then( res => {
+                toast.success("Review deleted successfully");
+                this.GetReviews(reviewUrl);
+            })
+            .catch(err => {
+                if (err.response) {
+                    toast.error(err.response.data.message)
+                } else {
+                    console.log(err)
+                }
+            })
+        }
+        return (
+            <div class="level-item">
+                <span className="icon">
+                    <BootstrapTooltip title={"Delete"}>
+                        <IconButton disableRipple="true" size="small" onClick={handleDelete}>
+                            <i className="fas fa-trash fa-xs"/>
+                        </IconButton>
+                    </BootstrapTooltip>
+                </span>
+            </div>
+        );
+    };
 
 	RenderReviews = () => {
-		const { reviews } = this.state;
+        const { reviews, reviewsVisible } = this.state;
 		if (!reviews.length) return <div> No reviews to show!</div>;
 		return (
             <div class="container">
-                {reviews.slice(0, this.state.reviewsVisible).map((review, i) => (
-                    <Review
-                        author={review.author}
-                        date={review.date}
-                        text={review.text}
-                    />
+                {reviews.slice(0, reviewsVisible).map((review, i) => (
+                        <Review
+                            author={review.firstName + " " + review.lastName}
+                            date={<ReactTimeAgo date={review.created_at}/>}
+                            text={review.reviewText}
+                            options={this.RenderOptions(review.reviewId, review.userId)}
+                            renderOptions={this.props.user.userId === review.userId ? true : false}
+                        />
                 ))}
             </div>
 		);
@@ -74,7 +200,7 @@ class Extended extends Component {
                 </div>
             );
         }
-    }
+    };
     
     RenderWriteReview = () => {
         if(this.props.isAuthenticated){
@@ -98,7 +224,35 @@ class Extended extends Component {
         } else {
             return <h1 class="subtitle" style={{ fontFamily: "Pacifico" }}>Login to write a review...</h1>
         }
-    }
+    };
+
+    RenderWishlistButton = () => {
+        const { isWishlisted } = this.state;
+
+        if(this.props.isAuthenticated){
+            if(isWishlisted){
+                return (
+                    <span class="icon" key="filled">
+                        <BootstrapTooltip title={"Added to Wishlist"}>
+                            <IconButton disableRipple="true" onClick={this.handleWishlistChange} color="secondary">
+                                <i className="fas fa-heart"/>
+                            </IconButton>
+                        </BootstrapTooltip>
+                    </span>
+                );
+            } else {
+                return (
+                    <span class="icon" key="bordered">
+                        <BootstrapTooltip title={"Add to Wishlist"}>
+                            <IconButton disableRipple="true" onClick={this.handleWishlistChange} color="secondary">
+                                <i className="far fa-heart"/>
+                            </IconButton>
+                        </BootstrapTooltip>
+                    </span>
+                );
+            }
+        }
+    };
 
 	render() {
 		const { property } = this.state;
@@ -119,9 +273,7 @@ class Extended extends Component {
 							</h1>
 						</div>
 						<div class="level-right">
-							<span class="icon">
-								<i className="far fa-star" />
-							</span>
+                            {this.RenderWishlistButton()}
 						</div>
 					</div>
 					<div class="level-item level-left" style={{ paddingBottom: "10px" }}>
@@ -420,7 +572,8 @@ class Extended extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user : state.auth.user, 
 })
 
 export default withRouter(connect(mapStateToProps)(Extended));

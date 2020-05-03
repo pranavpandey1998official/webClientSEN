@@ -4,6 +4,8 @@ const Review = ({
 	author,
 	date,
 	text,
+    options,
+    renderOptions
 }) => {
 	return (
 		<article class="media">
@@ -17,6 +19,7 @@ const Review = ({
 							<div class="level-item">
 								<small style={{ fontSize:"13px" }}>{date}</small>
 							</div>
+                            {renderOptions && options}
 						</div>
 					</div>
 					<p style={{ fontSize:"18px" }}>{text}</p>
