@@ -57,12 +57,6 @@ const useStyles = makeStyles(theme => ({
 	position: 'relative',
 	flexDirection:'column',
     height: '160px',
-    '&:hover, &$focusVisible': {
-      zIndex: 1,
-	  '& $imageButton': {
-        color: theme.palette.common.black
-      },
-    },
   },
 
   focusVisible: {
@@ -83,7 +77,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   imageSrc: {
-	position:'absolute',
+    position:'absolute',
 	height: '130px',
     left: 0,
     right: 0,
@@ -97,9 +91,6 @@ const useStyles = makeStyles(theme => ({
 
 function ImageButton() {
 	const classes = useStyles();
-	const handleClick = (title) => {
-		
-	}
 
 	return (
 		<div className={classes.root}>
