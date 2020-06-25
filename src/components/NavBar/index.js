@@ -15,14 +15,14 @@ const NavBar = ({ isAuthenticated, logoutUser }) => {
 		if (isAuthenticated) {
 			return (
 				<div className="navbar-item">
-					{/* <Link className="navbar-item" to='/wishList'>
+					 <Link className="navbar-item" to='/wishList'>
 						<span className="icon has-text-info is-medium">
 						<i className="fas fa-list fa-lg"></i>
 				  		</span>
-					</Link> */}
-					{/* <span className="icon has-text-info is-medium">
+					</Link> 
+					 <span className="icon has-text-info is-medium">
 						<i className="far fa-bell fa-lg"></i>
-				  	</span> */}
+				  	</span>
 					<div className="button is-light" onClick={logoutUser}>Logout</div>
 				</div>
 			);

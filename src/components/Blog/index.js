@@ -27,7 +27,7 @@ class Blog extends Component {
                             <div className="media">
                                 <div className="media-content">
                                     <p className="title is-4">Buy low, sell high</p>
-                                    <p className="subtitle is-6"><a href="https://www.linkedin.com/in/dkp1903" target="_blank">@dkp1903</a></p>
+                                    <p className="subtitle is-6"><a href="https://www.linkedin.com/in/dkp1903" target="_blank" rel="noopener noreferrer">@dkp1903</a></p>
                                 </div>
                             </div>
 
@@ -40,7 +40,7 @@ class Blog extends Component {
                                 And thus, it is always good to hold your emotions at bay, cover your bets, and invest large only when
                                 you are prepared to lose it.
                                 <br />
-                                <a href = "https://economictimes.indiatimes.com/wealth/real-estate/how-much-can-you-afford-to-buy-a-house-for/articleshow/63653919.cms?from=mdr" target = "_blank">
+                                <a href = "https://economictimes.indiatimes.com/wealth/real-estate/how-much-can-you-afford-to-buy-a-house-for/articleshow/63653919.cms?from=mdr" target = "_blank" rel="noopener noreferrer">
                                     <button className = "button is-primary" >Learn More
                                         </button>
                                 </a>
@@ -60,7 +60,7 @@ class Blog extends Component {
                             <div className="media">
                                 <div className="media-content">
                                     <p className="title is-4">Location over amenities</p>
-                                    <p className="subtitle is-6"><a href="https://www.linkedin.com/in/dkp1903" target="_blank">@dkp1903</a></p>
+                                    <p className="subtitle is-6"><a href="https://www.linkedin.com/in/dkp1903" target="_blank" rel="noopener noreferrer">@dkp1903</a></p>
                                 </div>
                             </div>
 
@@ -73,7 +73,7 @@ class Blog extends Component {
                                 Urban lifestyle has translated luxury at par with necessity, and this applies largely in the real estate business.
                                 Thus, location is one factor that shouldn't be compromised.
                                 <br />
-                                <a href = "https://www.confident-group.com/blog/importance-of-location-in-real-estate/#:~:text=Importance%20of%20location%20in%20real%20estate%20purchase%20always%20seems%20to,causes%20a%20rise%20in%20price." target = "_blank">
+                                <a href = "https://www.confident-group.com/blog/importance-of-location-in-real-estate/#:~:text=Importance%20of%20location%20in%20real%20estate%20purchase%20always%20seems%20to,causes%20a%20rise%20in%20price." target = "_blank"  rel="noopener noreferrer">
                                     <button className = "button is-primary" >Learn More
                                         </button>
                                 </a>
@@ -94,7 +94,7 @@ class Blog extends Component {
                             <div className="media">
                                 <div className="media-content">
                                     <p className="title is-4">Financing</p>
-                                    <p className="subtitle is-6"><a href="https://www.linkedin.com/in/dkp1903" target="_blank">@dkp1903</a></p>
+                                    <p className="subtitle is-6"><a href="https://www.linkedin.com/in/dkp1903" target="_blank" rel="noopener noreferrer">@dkp1903</a></p>
                                 </div>
                             </div>
 
@@ -104,7 +104,7 @@ class Blog extends Component {
                                 or downfall. In such a case, should you have invested in cash, you might have to forfeit all of it. Loans, however,
                                 have a chance of being written off, based on situation, by the banks.
                                 <br />
-                                <a href = "https://www.fool.com/millionacres/real-estate-financing/articles/5-tips-getting-loan-your-real-estate-investment/" target = "_blank">
+                                <a href = "https://www.fool.com/millionacres/real-estate-financing/articles/5-tips-getting-loan-your-real-estate-investment/" target = "_blank" rel="noopener noreferrer">
                                     <button className = "button is-primary" >Learn More
                                         </button>
                                 </a>

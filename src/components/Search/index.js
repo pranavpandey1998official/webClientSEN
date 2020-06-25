@@ -47,7 +47,7 @@ class Search extends Component {
         }
         return (
         <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
-            <a class="button is-primary" onClick={this.loadmore}>Load more </a>
+            <button className="button is-primary" onClick={this.loadmore}>Load more </button>
         </div>)
     }
 
