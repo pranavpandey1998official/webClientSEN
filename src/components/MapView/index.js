@@ -82,7 +82,7 @@ class MapView extends Component
             <img src={`${SERVER_URL}/${this.state.popupProperty.imagePath}`} alt="Property" />
         </figure>
     </div>
-    <div class="card-content">
+    <div className="card-content">
         <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
