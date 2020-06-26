@@ -44,9 +44,9 @@ const SliderValues = ( type, name ) => {
 			};
 		} else {
 			return {
-				defaultValue: [100,5000],
+				defaultValue: [100,20000],
 				min: 100,
-				max: 5000,
+				max: 20000,
 				step: 10,
 			};
 		}
@@ -257,7 +257,7 @@ const Filter = withFormik({
             category : 'buy',
 			type : { value: "any", label: "Any" },
 			price : [10,1000],
-			totalSqft : [100,5000],
+			totalSqft : [100,20000],
 			noOfBalconies : '1',
 			noOfBathrooms : '1',
 			noOfBedrooms : '1',
@@ -285,11 +285,13 @@ const Filter = withFormik({
 				min: totalSqft[0]
 			},
 			price: price && {
-				max: price[1],
-				min: price[0]
+				max: price[1]*100000,
+				min: price[0]*100000
 			},
-			type: type && type.value,
-		}
+        }
+        if(type.value && type.value !== 'any') {
+            body.type = type.value
+        }
 		amenities.forEach((item) => {
 			body[item.value] = true;
 		});

@@ -41,13 +41,13 @@ class Search extends Component {
             return (
                 <div style={{textAlign: "center",fontFamily: 'Pacifico',fontSize: "2.5em"}} > 
                 
-                    Sorry try another filter
+                    Sorry, try another filter
                 </div>
             )
         }
         return (
         <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
-            <a class="button is-primary" onClick={this.loadmore}>load more </a>
+            <button className="button is-primary" onClick={this.loadmore}>Load more </button>
         </div>)
     }
 
