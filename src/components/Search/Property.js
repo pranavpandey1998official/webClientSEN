@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const Property = ({
+  name,
   type,
   ownerPhoneNumber,
   city,
@@ -25,6 +26,7 @@ const Property = ({
                   <img style={{ height: 250, width: 350 }} src={imageURL} alt="Image" />
                 </figure>
               </div>
+              
               <div className="media-content">
                 <div className="content">
                   
