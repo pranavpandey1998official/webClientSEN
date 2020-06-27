@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const Property = ({
-  name,
+  propertyName,
   type,
   ownerPhoneNumber,
   city,
@@ -17,11 +17,11 @@ const Property = ({
   onClick,
   id,
 }) =>  {
-
     return (
           <div className="box" onClick={() => onClick(id)}>
             <article className="media">
               <div className="media-left">
+              <h1 className="title is-4"><strong>{propertyName}</strong></h1>
                 <figure className="image is-3x2">
                   <img style={{ height: 250, width: 350 }} src={imageURL} alt="Image" />
                 </figure>
@@ -29,7 +29,6 @@ const Property = ({
               
               <div className="media-content">
                 <div className="content">
-                  
                   <div className="block">
                     <nav className="level" >
 
@@ -45,7 +44,6 @@ const Property = ({
                         <span style={{ marginBottom: 0 }}><i> {' BHK'}</i></span>
                       </div>
                     </nav>
-
                   </div>
                   <div className="block">
                     <div className="content">

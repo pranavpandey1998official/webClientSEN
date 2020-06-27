@@ -58,7 +58,6 @@ class Search extends Component {
                 <i className="fas fa-spinner fa-pulse fa-3x"></i>
             </div>
         );
-        
 
         return (
            <>
@@ -78,6 +77,7 @@ class Search extends Component {
                     distanceToNearestHospital={property.distanceToNearestHospital}
                     distanceToNearestSchool={property.distanceToNearestSchool}
                     furnished={property.furnished}
+                    propertyName={property.propertyName}
                     imageURL={SERVER_URL + '/' + property.imagePath}
                 />))}
                 {this.renderFooter()}
