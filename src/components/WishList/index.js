@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Property from '../Shared/Property';
+import axios from 'axios';
 
 import { SERVER_URL } from '../../utils/constants';
 
@@ -15,9 +16,9 @@ class WishList extends Component {
 
     async componentDidMount() {
         const url = SERVER_URL + '/wishlist';
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setProperty(data.property);
+        const response = await axios.get(url);
+        const data = response.data
+        this.setProperty(data.wishlist);
     }
 
     setProperty = (property) => {
