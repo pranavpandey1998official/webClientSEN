@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Property from './Property';
+import Property from '../Shared/Property';
 import Filter from './Filter';
 import { withRouter } from 'react-router-dom';
 
