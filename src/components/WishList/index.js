@@ -32,7 +32,6 @@ class WishList extends Component {
                 <i className="fas fa-spinner fa-pulse fa-3x"></i>
             </div>
         );
-        
 
         return (
            <>
@@ -51,6 +50,7 @@ class WishList extends Component {
                     distanceToNearestSchool={property.distanceToNearestSchool}
                     furnished={property.furnished}
                     imageURL={SERVER_URL + '/' + property.imagePath}
+                    propertyName={property.propertyName}
                 />))}
             </>
         )
