@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Property from './Property';
+import Property from '../Shared/Property';
 import Filter from './Filter';
 import { withRouter } from 'react-router-dom';
 
@@ -41,13 +41,13 @@ class Search extends Component {
             return (
                 <div style={{textAlign: "center",fontFamily: 'Pacifico',fontSize: "2.5em"}} > 
                 
-                    Sorry try another filter
+                    Sorry, try another filter
                 </div>
             )
         }
         return (
         <div class="block" style={{ textAlign: 'center' }} data-test-id="loadMoreButton">
-            <a class="button is-primary" onClick={this.loadmore}>load more </a>
+            <button className="button is-primary" onClick={this.loadmore}>Load more </button>
         </div>)
     }
 
@@ -58,7 +58,6 @@ class Search extends Component {
                 <i className="fas fa-spinner fa-pulse fa-3x"></i>
             </div>
         );
-        
 
         return (
            <>
@@ -78,6 +77,7 @@ class Search extends Component {
                     distanceToNearestHospital={property.distanceToNearestHospital}
                     distanceToNearestSchool={property.distanceToNearestSchool}
                     furnished={property.furnished}
+                    propertyName={property.propertyName}
                     imageURL={SERVER_URL + '/' + property.imagePath}
                 />))}
                 {this.renderFooter()}
