@@ -23,6 +23,7 @@ import Search from './Search';
 import NotAvailable from './NotAvailable';
 import MapView from './MapView';
 import Property from './Property';
+import WishList from './WishList';
 
 
 class App extends Component {
@@ -57,6 +58,9 @@ class App extends Component {
                 </Route>
                 <Route path="/info/:info">
                   <Info />
+                </Route>
+                <Route path="/wishList">
+                  <WishList />
                 </Route>
                 <Route path="/reset-password/:token">
                   <ResetPassword />
